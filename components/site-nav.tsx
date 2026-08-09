@@ -27,11 +27,18 @@ function Wordmark() {
           />
         </svg>
       </span>
-      <span className="hidden leading-tight sm:block">
-        <span className="block whitespace-nowrap font-display text-[0.95rem] font-semibold tracking-tight text-ink">
+      {/*
+        The clinic name itself is always visible, at every viewport width —
+        it is the one thing in the header that should never disappear. Only
+        the smaller tagline line under it, a "nice to have" rather than
+        identifying information, is held back below `sm` to keep the header
+        from feeling cramped on the narrowest phones.
+      */}
+      <span className="leading-tight">
+        <span className="block whitespace-nowrap font-display text-[0.82rem] font-semibold tracking-tight text-ink sm:text-[0.95rem]">
           Perth Sweat Clinic
         </span>
-        <span className="block whitespace-nowrap text-[0.68rem] uppercase tracking-[0.14em] text-muted">
+        <span className="hidden whitespace-nowrap text-[0.68rem] uppercase tracking-[0.14em] text-muted sm:block">
           Hyperhidrosis specialists
         </span>
       </span>

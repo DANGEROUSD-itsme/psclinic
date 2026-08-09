@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useCallback, useEffect, useRef } from "react";
 
-import { Rain } from "@/components/rain";
 import { ArrowRight, ButtonLink } from "@/components/ui";
 import type { PointerState } from "@/components/webgl/dry-hand-field";
 import { useNearViewport, useWebGLEligible } from "@/lib/hooks";
@@ -92,11 +91,6 @@ export function Hero() {
       {/* Ambient wash. Doubles as the complete static fallback whenever the
           droplet field is not rendered. */}
       <div aria-hidden className="u-wash absolute inset-0 -z-20" />
-
-      {/* Falling rain, behind the evaporating droplets in front of it —
-          weather outside, drying up close. Same masked zone as the droplet
-          field so neither ever fights the headline for contrast. */}
-      <Rain />
 
       {/*
         The droplets are decoration; the promise they illustrate is stated in

@@ -6,12 +6,11 @@ import { patientStories, trustStats } from "@/lib/site";
 /**
  * Results.
  *
- * This used to be the site's one dark section — a deliberate mood change
+ * This used to be the site's one dark section, a deliberate mood change
  * between the treatment detail and the commercial sections. In practice it
  * read as a hard, ugly cut in the page rather than a considered pause, so
- * it's back on the light base like everything around it. The rain effect
- * that lived here moved to the hero, which is where "weather" actually
- * belongs on this page — this section just states the results plainly.
+ * it's back on the light base like everything around it. This section just
+ * states the results plainly.
  */
 export function Trust() {
   return (
