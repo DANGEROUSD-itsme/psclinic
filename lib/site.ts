@@ -168,7 +168,6 @@ export const conditions: {
 
 export const conditionFacts = [
   { stat: "~3%", label: "of the general population live with hyperhidrosis" },
-  { stat: "~5%", label: "prevalence in people of Asian descent" },
   { stat: "~50%", label: "of patients have a parent with the same condition" },
   { stat: "Early teens", label: "when symptoms most commonly begin" },
 ];

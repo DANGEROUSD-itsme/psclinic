@@ -222,7 +222,7 @@ export function Conditions() {
         </div>
 
         {/* Prevalence facts */}
-        <RevealGroup className="mt-16 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-16 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
           {conditionFacts.map((fact) => (
             <RevealItem key={fact.label} className="bg-bone px-6 py-7">
               <p className="font-display text-2xl text-clinical-700">
