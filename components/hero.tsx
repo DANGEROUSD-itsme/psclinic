@@ -142,7 +142,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: EASE_OUT_SOFT, delay: 0.16 }}
             className="mt-7 max-w-xl text-lg text-slate sm:text-xl"
           >
-            Excessive sweating of the hands, underarms and face — treated
+            Excessive sweating of the hands, underarms and face, treated
             permanently by a Harvard-trained cardiothoracic surgeon. Most
             patients are home the same day.
           </motion.p>

@@ -47,7 +47,7 @@ export function EtsExplainer() {
               <p className="mt-5 text-slate">
                 The technique, what it involves, and what recovery looks like
                 for you specifically are things Dr Sharma will walk you
-                through in your consultation — not something a webpage
+                through in your consultation, not something a webpage
                 should try to summarise for you in advance. What follows here
                 is what you should know going in: what it treats, where it
                 happens, and its genuine risks.
@@ -127,7 +127,7 @@ export function EtsExplainer() {
             <p className="mt-5 text-slate">
               Dr Sharma will go through all of these with you before you decide
               anything. Compensatory sweating in particular is worth weighing
-              carefully — it is the most common one.
+              carefully; it is the most common one.
             </p>
           </div>
         </Reveal>

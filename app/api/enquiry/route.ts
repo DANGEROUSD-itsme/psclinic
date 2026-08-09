@@ -103,7 +103,7 @@ export async function POST(request: Request) {
   ];
 
   const html = `
-    <h2>New enquiry — ${escapeHtml(clinic.name)}</h2>
+    <h2>New enquiry: ${escapeHtml(clinic.name)}</h2>
     <table cellpadding="6" style="border-collapse:collapse">
       ${rows
         .map(

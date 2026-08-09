@@ -107,7 +107,7 @@ function DepthDiagram() {
           strokeWidth="2"
         />
         <text x="20" y="222" fill="#7a8b91" fontSize="11" letterSpacing="0.08em">
-          SWEAT, ODOUR AND HAIR GLANDS — PERMANENTLY DESTROYED
+          SWEAT, ODOUR AND HAIR GLANDS: PERMANENTLY DESTROYED
         </text>
         <text x="20" y="262" fill="#7a8b91" fontSize="11" letterSpacing="0.08em">
           DEEPER TISSUE UNAFFECTED

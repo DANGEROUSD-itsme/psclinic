@@ -78,7 +78,7 @@ export function Faq() {
           <SectionHeading
             label="Questions"
             title="The things people ask before booking."
-            lede="If your question is not here, call the clinic — you will speak to someone who can answer it properly."
+            lede="If your question is not here, call the clinic. You will speak to someone who can answer it properly."
           />
           <Reveal>
             <a

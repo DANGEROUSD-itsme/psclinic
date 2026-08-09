@@ -20,7 +20,7 @@ export function Learn() {
         <SectionHeading
           label="Learn"
           title="Understanding what you are living with."
-          lede="Plain-language reading on hyperhidrosis — the biology, the day-to-day, and the part most people never talk about."
+          lede="Plain-language reading on hyperhidrosis: the biology, the day-to-day, and the part most people never talk about."
         />
 
         <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2" childDelay={0.07}>

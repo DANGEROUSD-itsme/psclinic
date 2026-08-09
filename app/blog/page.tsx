@@ -10,7 +10,7 @@ import { articles, clinic } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Learn",
   description:
-    "Plain-language reading on hyperhidrosis — the biology, the day-to-day, and the part most people never talk about.",
+    "Plain-language reading on hyperhidrosis: the biology, the day-to-day, and the part most people never talk about.",
 };
 
 export default function BlogIndexPage() {
@@ -22,7 +22,7 @@ export default function BlogIndexPage() {
           <SectionHeading
             label="Learn"
             title="Understanding what you are living with."
-            lede="Plain-language reading on hyperhidrosis — the biology, the day-to-day, and the part most people never talk about."
+            lede="Plain-language reading on hyperhidrosis: the biology, the day-to-day, and the part most people never talk about."
           />
 
           <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2" childDelay={0.07}>

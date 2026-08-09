@@ -42,13 +42,13 @@ export const doctor = {
   quote:
     "The delight of shaking a patient's dry hand after surgery is one of the most gratifying aspects of being a surgeon.",
   intro:
-    "Not a beauty clinic. Hyperhidrosis here is treated as a surgical sub-specialty by one of Perth's busiest cardiothoracic surgeons — someone who operates inside the chest almost every working day.",
+    "Not a beauty clinic. Hyperhidrosis here is treated as a surgical sub-specialty by one of Perth's busiest cardiothoracic surgeons, someone who operates inside the chest almost every working day.",
   bio: [
     "Born in the United States, Dr Sharma migrated to Perth as a young child and was schooled at Duncraig Senior High School before completing his medical degree at the University of Western Australia in 1992.",
-    "He undertook a six-year surgical training program in cardiothoracic surgery at Royal Perth Hospital, along with further training in the Eastern States and New Zealand, before obtaining his Fellowship in 2002 at age 32 — one of the youngest cardiothoracic surgeons in Australia at the time.",
-    "He then completed post-fellowship training at Brigham and Women's Hospital, Harvard Medical School, in Boston through 2002 and 2003, training under Professor Lawrence Cohn, the Virginia and James Hubbard Professor of Cardiac Surgery at Harvard. That training covered advanced minimally invasive valve surgery, transplantation, blood conservation and lung cancer surgery — and is where his interest in surgical treatment for hyperhidrosis began.",
+    "He undertook a six-year surgical training program in cardiothoracic surgery at Royal Perth Hospital, along with further training in the Eastern States and New Zealand, before obtaining his Fellowship in 2002 at age 32, one of the youngest cardiothoracic surgeons in Australia at the time.",
+    "He then completed post-fellowship training at Brigham and Women's Hospital, Harvard Medical School, in Boston through 2002 and 2003, training under Professor Lawrence Cohn, the Virginia and James Hubbard Professor of Cardiac Surgery at Harvard. That training covered advanced minimally invasive valve surgery, transplantation, blood conservation and lung cancer surgery, and is where his interest in surgical treatment for hyperhidrosis began.",
     "He commenced practice back in Perth in 2004 at Mount Hospital and Fremantle Hospital, and went on to serve as Head of Department, Cardiothoracic Surgery at Fremantle Hospital from 2011 to 2015, introducing blood conservation principles that measurably reduced transfusion requirements for surgical patients there, before the department transferred to Fiona Stanley Hospital.",
-    "He established the thoracic surgical programs at St John of God Murdoch in 2012 and at Joondalup Health Campus in 2015, and continues to hold regular operating lists at all three — Mount Hospital, St John of God Murdoch and Joondalup Health Campus. His broader practice covers cardiac surgery — bypass, valve repair and replacement, aneurysm repair — alongside minimally invasive lung cancer surgery, and he has published and presented extensively in peer-reviewed journals.",
+    "He established the thoracic surgical programs at St John of God Murdoch in 2012 and at Joondalup Health Campus in 2015, and continues to hold regular operating lists at all three: Mount Hospital, St John of God Murdoch and Joondalup Health Campus. His broader practice covers cardiac surgery (bypass, valve repair and replacement, aneurysm repair) alongside minimally invasive lung cancer surgery, and he has published and presented extensively in peer-reviewed journals.",
   ],
   credentials: [
     {
@@ -57,7 +57,7 @@ export const doctor = {
     },
     {
       label: "FRACS",
-      detail: "Fellowship obtained 2002, age 32 — Royal Australasian College of Surgeons",
+      detail: "Fellowship obtained 2002, age 32 · Royal Australasian College of Surgeons",
     },
     {
       label: "Curtin Medical School",
@@ -79,7 +79,7 @@ export const doctor = {
   milestones: [
     { year: "1992", event: "Completed his medical degree (MBBS) at the University of Western Australia" },
     { year: "2002", event: "Obtained his FRACS Fellowship at age 32, then trained at Brigham and Women's Hospital, Harvard Medical School" },
-    { year: "2004", event: "Commenced practice in Perth — Mount Hospital and Fremantle Hospital" },
+    { year: "2004", event: "Commenced practice in Perth: Mount Hospital and Fremantle Hospital" },
     { year: "2011", event: "Appointed Head of Department, Cardiothoracic Surgery, Fremantle Hospital" },
     { year: "2012", event: "Established the thoracic surgical program at St John of God Murdoch" },
     { year: "2015", event: "Department transferred to Fiona Stanley Hospital; established the Joondalup Health Campus program" },
@@ -100,7 +100,7 @@ export const careTeam = [
     quals:
       "B.Sc. Nursing, Curtin University (2007–2011) · Grad. Cert. Clinical Nursing, University of Notre Dame Fremantle (2013)",
     summary:
-      "Began as a Graduate Registered Nurse at The Mount Hospital in 2012, working in the operating theatre and on the surgical cardiothoracic and vascular wards, before moving into clinical coordination. Now coordinates patient care around every procedure at the clinic — the person most patients speak with between their consultation and their procedure day.",
+      "Began as a Graduate Registered Nurse at The Mount Hospital in 2012, working in the operating theatre and on the surgical cardiothoracic and vascular wards, before moving into clinical coordination. Now coordinates patient care around every procedure at the clinic: the person most patients speak with between their consultation and their procedure day.",
   },
 ] as const;
 
@@ -178,14 +178,14 @@ export const journey = [
     step: "01",
     title: "Consultation",
     body:
-      "An appointment with Dr Sharma directly — in the Mounts Bay Rd suite, or by phone or video if you are regional. He examines the pattern, severity and history of your sweating.",
+      "An appointment with Dr Sharma directly, in the Mounts Bay Rd suite, or by phone or video if you are regional. He examines the pattern, severity and history of your sweating.",
     meta: "$300 · Medicare rebate $86.15 with a valid GP referral",
   },
   {
     step: "02",
     title: "Diagnosis",
     body:
-      "Confirming the sub-type — palmar, axillary or craniofacial — and ruling out secondary causes. Which area is affected determines which treatment is appropriate.",
+      "Confirming the sub-type (palmar, axillary or craniofacial) and ruling out secondary causes. Which area is affected determines which treatment is appropriate.",
     meta: "In person, phone or video",
   },
   {
@@ -199,8 +199,8 @@ export const journey = [
     step: "04",
     title: "Procedure day",
     body:
-      "ETS is a day procedure — you are admitted, treated and discharged the same day, with no overnight stay. miraDry is a single in-office appointment of around 60–90 minutes. Exact timing on the day is confirmed with you beforehand, not estimated here.",
-    meta: "Day procedure — no overnight stay",
+      "ETS is a day procedure: you are admitted, treated and discharged the same day, with no overnight stay. miraDry is a single in-office appointment of around 60–90 minutes. Exact timing on the day is confirmed with you beforehand, not estimated here.",
+    meta: "Day procedure, no overnight stay",
   },
   {
     step: "05",
@@ -276,7 +276,7 @@ export const treatments = [
     summary:
       "The clinic's flagship surgical procedure, offered once conservative treatments have failed. Minimally invasive keyhole surgery that permanently interrupts the overactive nerve signal.",
     points: [
-      "Day procedure — home the same day",
+      "Day procedure, home the same day",
       "Minimally invasive keyhole technique",
       "General anaesthetic, in an accredited hospital",
       "Full explanation of technique and risks at consultation",
@@ -296,7 +296,7 @@ export const treatments = [
       "60–90 minutes, in-office",
       "85% of patients need one treatment only",
       "TGA-approved (2014) and FDA-approved (2011)",
-      "Permanent — glands do not regenerate",
+      "Permanent, glands do not regenerate",
     ],
     price: "$2,900",
     priceNote: "Complete treatment · second treatment if needed $2,400",
@@ -325,7 +325,7 @@ export const trustStats = [
   { value: "85%", label: "of miraDry patients need one treatment only", detail: "Treated at level 5" },
   { value: "Same day", label: "discharge after ETS surgery", detail: "No overnight hospital stay" },
   { value: "TGA + FDA", label: "approved miraDry technology", detail: "TGA 2014 · FDA 2011" },
-  { value: "Permanent", label: "results — glands do not regenerate", detail: "No maintenance treatments" },
+  { value: "Permanent", label: "results, glands do not regenerate", detail: "No maintenance treatments" },
 ];
 
 /**
@@ -420,7 +420,7 @@ export const faqs = [
   },
   {
     q: "What is compensatory sweating?",
-    a: "After ETS, up to around 40% of patients notice increased sweating elsewhere — typically the trunk or back. It is usually mild, but it is a genuine trade-off and Dr Sharma will discuss it with you in full before you decide.",
+    a: "After ETS, up to around 40% of patients notice increased sweating elsewhere, typically the trunk or back. It is usually mild, but it is a genuine trade-off and Dr Sharma will discuss it with you in full before you decide.",
   },
   {
     q: "Do I have to travel to Perth for the consultation?",
@@ -457,27 +457,27 @@ export const articles = [
     slug: "why-does-our-sweat-stink",
     title: "Why Does Our Sweat Stink?",
     excerpt:
-      "Sweat itself is close to odourless — the smell comes from skin bacteria breaking it down. Stress, synthetic fabrics and diet all change how much there is to break down.",
+      "Sweat itself is close to odourless. The smell comes from skin bacteria breaking it down. Stress, synthetic fabrics and diet all change how much there is to break down.",
     topic: "The science",
     sourceUrl: "https://www.perthsweatclinic.com.au/blog/what-makes-our-sweat-stink/",
     body: [
-      "Sweat itself is close to odourless. The smell most people associate with it is actually produced by bacteria on the skin — groups including Corynebacteriaceae, Staphylococcaceae and Propionibacteriaceae — feeding on the substances in sweat and breaking them down into smaller chemical compounds. Those compounds evaporate easily, which is exactly what lets them reach the nose.",
-      "How much odour that process produces depends on more than just how much you sweat. Stress pushes sweat glands into a higher gear, increasing both the volume of sweat and the odour that follows. Fabric choice matters too — synthetic materials like polyester, nylon and silk are less breathable than natural fibres, which keeps bacteria trapped against the skin rather than letting air move through.",
+      "Sweat itself is close to odourless. The smell most people associate with it is actually produced by bacteria on the skin, groups including Corynebacteriaceae, Staphylococcaceae and Propionibacteriaceae, feeding on the substances in sweat and breaking them down into smaller chemical compounds. Those compounds evaporate easily, which is exactly what lets them reach the nose.",
+      "How much odour that process produces depends on more than just how much you sweat. Stress pushes sweat glands into a higher gear, increasing both the volume of sweat and the odour that follows. Fabric choice matters too: synthetic materials like polyester, nylon and silk are less breathable than natural fibres, which keeps bacteria trapped against the skin rather than letting air move through.",
       "Diet plays a role as well: a diet lacking in leafy greens and nuts tends to produce worse body odour than a more balanced one. Even some deodorants can work against you, inadvertently giving the bacteria responsible for odour more fuel rather than less.",
-      "Age changes the picture too — as people get older, their apocrine glands slow down, which is part of why body odour becomes less pronounced later in life. For axillary hyperhidrosis specifically, where both sweat and odour-producing glands are overactive, miraDry addresses the mechanism directly rather than managing the symptoms day to day.",
+      "Age changes the picture too. As people get older, their apocrine glands slow down, which is part of why body odour becomes less pronounced later in life. For axillary hyperhidrosis specifically, where both sweat and odour-producing glands are overactive, miraDry addresses the mechanism directly rather than managing the symptoms day to day.",
     ],
   },
   {
     slug: "impact-of-hyperhidrosis-on-patients",
     title: "Understanding the Impact of Hyperhidrosis on Patients",
     excerpt:
-      "Quality-of-life studies put the impact of hyperhidrosis on par with rheumatoid arthritis or depression — patients report avoiding handshakes and presentations, and choosing careers below their potential.",
+      "Quality-of-life studies put the impact of hyperhidrosis on par with rheumatoid arthritis or depression. Patients report avoiding handshakes and presentations, and choosing careers below their potential.",
     topic: "Living with it",
     sourceUrl: "https://www.perthsweatclinic.com.au/blog/impact-of-hyperhidrosis-on-patients/",
     body: [
-      "When patients with severe hyperhidrosis are asked about the functional, psychological and social impact of their condition, the studies are consistent: the effect on quality of life is comparable to other chronic conditions taken far more seriously by the people around the person living with them — rheumatoid arthritis, depression, inflammatory bowel disease.",
-      "A lot of what makes hyperhidrosis so disruptive happens quietly, well before anyone else notices anything. A meaningful part of a patient's day can be spent simply concealing the condition — planning what to wear, when to reapply antiperspirant, which seat to take in a meeting. Avoiding a handshake or declining to give a presentation is rarely read for what it is; more often it is interpreted by employers and colleagues as disinterest, laziness or a lack of confidence.",
-      "That misreading has real consequences. Patients frequently steer their careers around it, choosing roles below their actual potential specifically to avoid the interactions most likely to trigger visible sweating. And it does not switch off at the end of the day — many patients describe lying awake running through how they are going to manage or conceal the condition tomorrow, which is its own quiet toll.",
+      "When patients with severe hyperhidrosis are asked about the functional, psychological and social impact of their condition, the studies are consistent: the effect on quality of life is comparable to other chronic conditions taken far more seriously by the people around the person living with them, conditions like rheumatoid arthritis, depression or inflammatory bowel disease.",
+      "A lot of what makes hyperhidrosis so disruptive happens quietly, well before anyone else notices anything. A meaningful part of a patient's day can be spent simply concealing the condition: planning what to wear, when to reapply antiperspirant, which seat to take in a meeting. Avoiding a handshake or declining to give a presentation is rarely read for what it is; more often it is interpreted by employers and colleagues as disinterest, laziness or a lack of confidence.",
+      "That misreading has real consequences. Patients frequently steer their careers around it, choosing roles below their actual potential specifically to avoid the interactions most likely to trigger visible sweating. And it does not switch off at the end of the day. Many patients describe lying awake running through how they are going to manage or conceal the condition tomorrow, which is its own quiet toll.",
       "None of this is an overreaction to a cosmetic inconvenience. It is a recognised medical condition with a measurable effect on daily life, which is exactly why it is treated here as a surgical and medical sub-specialty rather than something to simply manage around.",
     ],
   },
@@ -489,9 +489,9 @@ export const articles = [
     topic: "Health",
     sourceUrl: "https://www.perthsweatclinic.com.au/blog/long-term-effects-excessive-sweating/",
     body: [
-      "The most immediate effects of excessive sweating are psychological — distress, embarrassment, social anxiety. But left untreated for years, hyperhidrosis carries physical consequences too, not just emotional ones.",
-      "Constant wetness on the hands, face or underarms softens and breaks down the outer layer of skin, a process called maceration. Macerated skin is more vulnerable to secondary bacterial infection, which can progress to bromhidrosis — a persistent, medically recognised odour condition distinct from ordinary body odour.",
-      "There is also a less obvious risk in how people try to manage the condition themselves before seeking treatment. Long-term, heavy use of aluminium chloride antiperspirants — often applied more frequently and at higher strength than the product is designed for, out of understandable desperation — can inflame and crack the skin, leading to a chronic, eczema-like condition of its own.",
+      "The most immediate effects of excessive sweating are psychological: distress, embarrassment, social anxiety. But left untreated for years, hyperhidrosis carries physical consequences too, not just emotional ones.",
+      "Constant wetness on the hands, face or underarms softens and breaks down the outer layer of skin, a process called maceration. Macerated skin is more vulnerable to secondary bacterial infection, which can progress to bromhidrosis, a persistent, medically recognised odour condition distinct from ordinary body odour.",
+      "There is also a less obvious risk in how people try to manage the condition themselves before seeking treatment. Long-term, heavy use of aluminium chloride antiperspirants (often applied more frequently and at higher strength than the product is designed for, out of understandable desperation) can inflame and crack the skin, leading to a chronic, eczema-like condition of its own.",
       "This is part of why the clinic weighs surgical and non-surgical treatment options against simply living with the condition indefinitely: prolonged, escalating self-management is not a neutral choice, and it has its own downsides worth knowing about before committing to it as a long-term strategy.",
     ],
   },
@@ -499,13 +499,13 @@ export const articles = [
     slug: "what-causes-excessive-sweating",
     title: "What Causes Excessive Sweating?",
     excerpt:
-      "A range of health conditions and medications can trigger sweating, which is why the clinic distinguishes primary hyperhidrosis — no underlying cause — from secondary hyperhidrosis, which has one.",
+      "A range of health conditions and medications can trigger sweating, which is why the clinic distinguishes primary hyperhidrosis (no underlying cause) from secondary hyperhidrosis, which has one.",
     topic: "The science",
     sourceUrl: "https://www.perthsweatclinic.com.au/blog/what-causes-excessive-sweating/",
     body: [
       "Not all excessive sweating is the same condition, which is why the first step in any consultation is working out which kind you actually have. Clinically, sweating is split into two categories: primary hyperhidrosis, which has no identifiable underlying medical cause, and secondary hyperhidrosis, which is a symptom of something else.",
-      "A wide range of health conditions and medications can trigger secondary sweating — fevers, cardiac events, obesity and an overactive thyroid (hyperthyroidism) among them, along with a number of medications that list sweating as a side effect. Identifying and treating the underlying cause is the right approach for secondary hyperhidrosis, and ruling it out is part of what a proper diagnosis involves.",
-      "Primary hyperhidrosis is different: it typically begins in the early teenage years, often runs in families, and is not a symptom of anything else that needs to be found and treated separately. It is the overactive sympathetic nervous system itself — not an underlying illness — driving the sweat glands in the hands, underarms or face.",
+      "A wide range of health conditions and medications can trigger secondary sweating: fevers, cardiac events, obesity and an overactive thyroid (hyperthyroidism) among them, along with a number of medications that list sweating as a side effect. Identifying and treating the underlying cause is the right approach for secondary hyperhidrosis, and ruling it out is part of what a proper diagnosis involves.",
+      "Primary hyperhidrosis is different: it typically begins in the early teenage years, often runs in families, and is not a symptom of anything else that needs to be found and treated separately. It is the overactive sympathetic nervous system itself, not an underlying illness, driving the sweat glands in the hands, underarms or face.",
       "Getting this distinction right at the consultation stage is what determines everything that follows: whether the right next step is investigating a possible underlying cause, or moving toward a targeted treatment like ETS or miraDry for primary hyperhidrosis.",
     ],
   },
@@ -513,14 +513,14 @@ export const articles = [
     slug: "facts-about-palmar-hyperhidrosis",
     title: "Facts About Palmar Hyperhidrosis",
     excerpt:
-      "Affecting an estimated 1–3% of people worldwide, palmar hyperhidrosis usually appears in the teenage years and persists into adulthood, often with a genetic link.",
+      "Affecting an estimated 1 to 3% of people worldwide, palmar hyperhidrosis usually appears in the teenage years and persists into adulthood, often with a genetic link.",
     topic: "The science",
     sourceUrl: "https://www.perthsweatclinic.com.au/blog/facts-about-palmar-hyperhidrosis/",
     body: [
-      "Palmar hyperhidrosis — excessive sweating of the hands — affects an estimated 1 to 3% of people worldwide, though most never seek treatment for it, having assumed for years that it was simply something to live with.",
+      "Palmar hyperhidrosis, excessive sweating of the hands, affects an estimated 1 to 3% of people worldwide, though most never seek treatment for it, having assumed for years that it was simply something to live with.",
       "It typically first appears in the early teenage years and, without treatment, persists into adulthood. It often runs in families: a genetic link is common, and it is not unusual for a patient to be able to point to a parent or sibling with the same condition.",
-      "Because it usually starts so young, palmar hyperhidrosis has an outsized effect on exactly the years when handshakes, exams, and first impressions matter most — job interviews, new relationships, physical work with tools or paper. Patients frequently describe having organised small parts of their life around it for so long that it stops feeling like a medical condition and starts feeling like a personality trait.",
-      "It is not one. Palmar hyperhidrosis has a specific physiological cause — an overactive sympathetic nerve chain — and a specific surgical treatment, ETS, that addresses that cause directly rather than managing the symptom.",
+      "Because it usually starts so young, palmar hyperhidrosis has an outsized effect on exactly the years when handshakes, exams, and first impressions matter most: job interviews, new relationships, physical work with tools or paper. Patients frequently describe having organised small parts of their life around it for so long that it stops feeling like a medical condition and starts feeling like a personality trait.",
+      "It is not one. Palmar hyperhidrosis has a specific physiological cause, an overactive sympathetic nerve chain, and a specific surgical treatment, ETS, that addresses that cause directly rather than managing the symptom.",
     ],
   },
 ];

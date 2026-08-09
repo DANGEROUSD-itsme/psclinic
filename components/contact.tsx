@@ -95,7 +95,7 @@ export function Contact() {
                 <Reveal>
                   <p className="mt-5 text-slate">
                     Send an enquiry and the clinic will be in touch to arrange a
-                    consultation with Dr Sharma — in person at Mounts Bay Rd, or
+                    consultation with Dr Sharma, in person at Mounts Bay Rd, or
                     by phone or video if you are regional.
                   </p>
                 </Reveal>
@@ -375,7 +375,7 @@ export function Contact() {
                     <p className="text-xs text-muted">
                       Your enquiry is forwarded to the clinic and is not stored
                       on this website. Please do not include detailed medical
-                      history here — that conversation belongs in your
+                      history here; that conversation belongs in your
                       consultation.
                     </p>
                   </motion.form>

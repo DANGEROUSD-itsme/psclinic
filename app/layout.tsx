@@ -22,7 +22,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(clinic.url),
   title: {
-    default: `${clinic.name} — Hyperhidrosis Treatment Perth`,
+    default: `${clinic.name} · Hyperhidrosis Treatment Perth`,
     template: `%s · ${clinic.name}`,
   },
   description,
@@ -42,12 +42,12 @@ export const metadata: Metadata = {
     locale: "en_AU",
     url: clinic.url,
     siteName: clinic.name,
-    title: `${clinic.name} — Hyperhidrosis Treatment Perth`,
+    title: `${clinic.name} · Hyperhidrosis Treatment Perth`,
     description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${clinic.name} — Hyperhidrosis Treatment Perth`,
+    title: `${clinic.name} · Hyperhidrosis Treatment Perth`,
     description,
   },
   robots: {

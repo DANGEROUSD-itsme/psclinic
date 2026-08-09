@@ -34,7 +34,7 @@ export function Footer() {
               </span>
             </div>
             <p className="u-measure mt-5 text-sm text-slate">
-              Hyperhidrosis treatment in Perth — endoscopic thoracic
+              Hyperhidrosis treatment in Perth: endoscopic thoracic
               sympathectomy and miraDry, led by cardiothoracic surgeon Dr Sanjay
               Sharma.
             </p>
