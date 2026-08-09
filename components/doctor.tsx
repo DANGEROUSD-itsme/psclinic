@@ -3,11 +3,27 @@
 import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel, SectionSeam } from "@/components/ui";
 import { careTeam, doctor } from "@/lib/site";
 
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .filter((part) => /^[A-Za-z]/.test(part))
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 /**
  * Dr Sharma leads the practice and his credentials are its strongest single
  * asset, so they get a full section rather than a paragraph in an about
  * page — but he is not the only person a patient deals with. The care team
  * strip at the end of this section introduces who else is involved.
+ *
+ * Portrait drop-in: once real photos are available, place them at
+ * `/public/team/dr-sanjay-sharma.jpg` and `/public/team/rishi-barot.jpg`
+ * and swap the two placeholder blocks below for `next/image`. Everything
+ * else — frame sizing, the 4:5 aspect ratio, the care-team avatar circles —
+ * is already built to take them without further layout work.
  */
 export function Doctor() {
   return (
@@ -47,7 +63,7 @@ export function Doctor() {
                   aria-hidden
                   className="flex h-24 w-24 items-center justify-center rounded-full border border-clinical-200 bg-white/70 font-display text-3xl text-clinical-700 backdrop-blur"
                 >
-                  SS
+                  {initials(doctor.name)}
                 </span>
                 <p className="px-10 text-center text-sm text-muted">
                   Portrait of {doctor.name}
@@ -178,22 +194,47 @@ export function Doctor() {
 
             <RevealGroup className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
               <RevealItem className="bg-white px-7 py-7">
-                <p className="font-display text-lg text-ink">{doctor.name}</p>
-                <p className="mt-1 text-sm text-clinical-700">
-                  Founder & Lead Specialist
-                </p>
-                <p className="mt-3 text-sm text-slate">{doctor.quals}</p>
+                <div className="flex items-center gap-4">
+                  {/* Same 2-letter avatar treatment as the portrait above,
+                      scaled down — the drop-in photo path is the same one
+                      noted on the component doc comment. */}
+                  <span
+                    aria-hidden
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-clinical-200 bg-clinical-50 font-display text-base text-clinical-700"
+                  >
+                    {initials(doctor.name)}
+                  </span>
+                  <div>
+                    <p className="font-display text-lg text-ink">
+                      {doctor.name}
+                    </p>
+                    <p className="text-sm text-clinical-700">
+                      Founder & Lead Specialist
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-slate">{doctor.quals}</p>
               </RevealItem>
 
               {careTeam.map((member) => (
                 <RevealItem key={member.name} className="bg-white px-7 py-7">
-                  <p className="font-display text-lg text-ink">
-                    {member.name}
-                  </p>
-                  <p className="mt-1 text-sm text-clinical-700">
-                    {member.role}
-                  </p>
-                  <p className="mt-3 text-sm text-slate">{member.quals}</p>
+                  <div className="flex items-center gap-4">
+                    <span
+                      aria-hidden
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-clinical-200 bg-clinical-50 font-display text-base text-clinical-700"
+                    >
+                      {initials(member.name)}
+                    </span>
+                    <div>
+                      <p className="font-display text-lg text-ink">
+                        {member.name}
+                      </p>
+                      <p className="text-sm text-clinical-700">
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm text-slate">{member.quals}</p>
                   <p className="mt-3 text-sm text-slate">{member.summary}</p>
                 </RevealItem>
               ))}

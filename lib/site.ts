@@ -43,18 +43,20 @@ export const doctor = {
   intro:
     "Not a beauty clinic. Hyperhidrosis here is treated as a surgical sub-specialty by one of Perth's busiest cardiothoracic surgeons — someone who operates inside the chest almost every working day.",
   bio: [
-    "Born in the United States and raised in Perth, Dr Sharma trained in medicine at the University of Western Australia before completing a cardiothoracic fellowship at Harvard Medical School in Boston.",
-    "He commenced practice in Perth in 2004 at Mount Hospital and Fremantle Hospital, and went on to serve as Head of Department, Cardiothoracic Surgery at Fremantle Hospital from 2011 to 2015 before transferring to Fiona Stanley Hospital.",
-    "He established the thoracic surgical programs at St John of God Murdoch in 2012 and at Joondalup Health Campus. His broader practice covers cardiac surgery — bypass, valve repair and replacement, aneurysm repair — alongside minimally invasive lung cancer surgery.",
+    "Born in the United States, Dr Sharma migrated to Perth as a young child and was schooled at Duncraig Senior High School before completing his medical degree at the University of Western Australia in 1992.",
+    "He undertook a six-year surgical training program in cardiothoracic surgery at Royal Perth Hospital, along with further training in the Eastern States and New Zealand, before obtaining his Fellowship in 2002 at age 32 — one of the youngest cardiothoracic surgeons in Australia at the time.",
+    "He then completed post-fellowship training at Brigham and Women's Hospital, Harvard Medical School, in Boston through 2002 and 2003, training under Professor Lawrence Cohn, the Virginia and James Hubbard Professor of Cardiac Surgery at Harvard. That training covered advanced minimally invasive valve surgery, transplantation, blood conservation and lung cancer surgery — and is where his interest in surgical treatment for hyperhidrosis began.",
+    "He commenced practice back in Perth in 2004 at Mount Hospital and Fremantle Hospital, and went on to serve as Head of Department, Cardiothoracic Surgery at Fremantle Hospital from 2011 to 2015, introducing blood conservation principles that measurably reduced transfusion requirements for surgical patients there, before the department transferred to Fiona Stanley Hospital.",
+    "He established the thoracic surgical programs at St John of God Murdoch in 2012 and at Joondalup Health Campus in 2015, and continues to hold regular operating lists at all three — Mount Hospital, St John of God Murdoch and Joondalup Health Campus. His broader practice covers cardiac surgery — bypass, valve repair and replacement, aneurysm repair — alongside minimally invasive lung cancer surgery, and he has published and presented extensively in peer-reviewed journals.",
   ],
   credentials: [
     {
       label: "Harvard Medical School",
-      detail: "Cardiothoracic Fellow, Boston MA",
+      detail: "Post-fellowship training, Brigham and Women's Hospital, Boston MA",
     },
     {
       label: "FRACS",
-      detail: "Fellow, Royal Australasian College of Surgeons — Cardiothoracic",
+      detail: "Fellowship obtained 2002, age 32 — Royal Australasian College of Surgeons",
     },
     {
       label: "Curtin Medical School",
@@ -74,28 +76,29 @@ export const doctor = {
     },
   ],
   milestones: [
+    { year: "1992", event: "Completed his medical degree (MBBS) at the University of Western Australia" },
+    { year: "2002", event: "Obtained his FRACS Fellowship at age 32, then trained at Brigham and Women's Hospital, Harvard Medical School" },
     { year: "2004", event: "Commenced practice in Perth — Mount Hospital and Fremantle Hospital" },
     { year: "2011", event: "Appointed Head of Department, Cardiothoracic Surgery, Fremantle Hospital" },
     { year: "2012", event: "Established the thoracic surgical program at St John of God Murdoch" },
-    { year: "2015", event: "Transferred to Fiona Stanley Hospital; established the Joondalup program" },
+    { year: "2015", event: "Department transferred to Fiona Stanley Hospital; established the Joondalup Health Campus program" },
   ],
 } as const;
 
 /**
  * The wider care team — Dr Sharma leads the practice, but he is not the
- * only person a patient deals with. The nurse coordinator's biographical
- * facts below are sourced from the clinic's own published "About Us" page;
- * no personal name is published there, so none is invented here. Update
- * `name` directly once the clinic confirms one for attribution.
+ * only person a patient deals with. Rishi's role, qualifications and career
+ * history are drawn from his own first-person bio on the clinic's "About
+ * Us" page.
  */
 export const careTeam = [
   {
-    name: "Clinical Nurse Coordinator",
-    role: "Patient care & theatre coordination",
+    name: "Rishi Barot",
+    role: "Clinical Nurse Coordinator",
     quals:
-      "B.Sc. Nursing, Curtin University · Grad. Cert. Clinical Nursing, University of Notre Dame Fremantle",
+      "B.Sc. Nursing, Curtin University (2007–2011) · Grad. Cert. Clinical Nursing, University of Notre Dame Fremantle (2013)",
     summary:
-      "Trained as a Registered Nurse at Curtin University before joining The Mount Hospital in 2012, working in the operating theatre and on the surgical cardiothoracic and vascular wards. Now coordinates patient care around every procedure at the clinic — the person most patients speak with between their consultation and their procedure day.",
+      "Began as a Graduate Registered Nurse at The Mount Hospital in 2012, working in the operating theatre and on the surgical cardiothoracic and vascular wards, before moving into clinical coordination. Now coordinates patient care around every procedure at the clinic — the person most patients speak with between their consultation and their procedure day.",
   },
 ] as const;
 

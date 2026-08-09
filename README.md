@@ -110,20 +110,25 @@ so figures cannot drift between sections. Structured data (`MedicalClinic`,
 
 ## Known gaps — things needing the clinic's input
 
-- **Photos of the team.** This is a hard blocker, not a choice: the sandbox this
-  site was built in cannot reach `perthsweatclinic.com.au` at all — both
-  `curl` and the fetch tooling get a `403` from the network's egress policy —
-  so no image could be downloaded from the live site to reuse here.
-  `components/doctor.tsx` has a designed placeholder in a 4:5 frame, ready for
-  an `<Image>` drop-in the moment real photos are supplied directly (upload,
-  or a Drive/Dropbox link an operator can fetch), for both Dr Sharma and the
-  clinical nurse coordinator introduced in the care-team card beneath his bio.
-- **The nurse coordinator's name.** Her role, qualifications and career history
-  in `careTeam` (`lib/site.ts`) are sourced from the clinic's own published
-  About page — but that page does not give a personal name, so none is
-  invented here. Replace `careTeam[0].name` directly once the clinic confirms
-  one, and whether there are other staff (additional doctors, admin, reception)
-  worth introducing the same way.
+- **Photos of the team.** Bio content for both Dr Sharma and Clinical Nurse
+  Coordinator Rishi Barot (`doctor` and `careTeam` in `lib/site.ts`) is sourced
+  from the clinic's own "About Us" page. Portraits are still placeholders —
+  this environment cannot reach `perthsweatclinic.com.au` at all (`curl` and
+  the fetch tooling both get a `403` from the network's egress policy), and
+  images pasted directly into chat aren't written anywhere on this sandbox's
+  filesystem, so there is no file to read even when a photo is shown in the
+  conversation. `components/doctor.tsx` has a designed 4:5 placeholder for Dr
+  Sharma and a matching avatar circle on each care-team card, both commented
+  with the expected paths (`/public/team/dr-sanjay-sharma.jpg`,
+  `/public/team/rishi-barot.jpg`) — add the files there (or anywhere in the
+  repo) and swap the placeholder `<div>` blocks for `next/image`. The most
+  reliable way to get them in: upload the two files directly into the GitHub
+  repo (Add file → Upload files) under `public/team/`, or via any URL an
+  operator session can fetch (Drive, Dropbox, S3 — anything that isn't
+  perthsweatclinic.com.au itself).
+- **Other staff.** Whether there are additional doctors, admin or reception
+  staff worth introducing the same way is worth confirming with the clinic —
+  `careTeam` takes more entries with no component changes needed.
 - **Patient stories.** `patientStories` in `lib/site.ts` is intentionally empty.
   Nothing on this site should be invented on a patient's behalf. Add consented,
   anonymised quotes and the block on the Results section appears automatically.
