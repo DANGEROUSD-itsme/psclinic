@@ -228,10 +228,20 @@ export function SectionSeam({
     <div
       aria-hidden
       className={`pointer-events-none absolute inset-x-0 -z-10 ${edge === "top" ? "top-0" : "bottom-0"} ${height}`}
-      style={{
-        backgroundImage: `linear-gradient(to ${edge === "top" ? "bottom" : "top"}, var(--color-${from}), transparent)`,
-      }}
-    />
+    >
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(to ${edge === "top" ? "bottom" : "top"}, var(--color-${from}), transparent)`,
+        }}
+      />
+      {/* Dithers the gradient above so it doesn't band on real displays —
+          a separate low-opacity layer, not combined into the gradient's own
+          background-image, since blending it there at full strength would
+          make the grain itself visible instead of just smoothing the
+          transition. Same texture as the .u-grain utility. */}
+      <div className="u-grain absolute inset-0" />
+    </div>
   );
 }
 

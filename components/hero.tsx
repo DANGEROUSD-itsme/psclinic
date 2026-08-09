@@ -16,8 +16,6 @@ const DryHandField = dynamic(() => import("@/components/webgl/dry-hand-field"), 
 });
 
 const heroStats = [
-  { value: "Harvard", label: "trained cardiothoracic surgeon" },
-  { value: "Same day", label: "home after surgery" },
   { value: "85%", label: "need one miraDry treatment" },
   { value: "Permanent", label: "results, not maintenance" },
 ];
@@ -182,7 +180,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE_OUT_SOFT, delay: 0.45 }}
-          className="grid grid-cols-4 gap-px overflow-hidden rounded-card border border-line bg-line"
+          className="inline-grid grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line"
         >
           {heroStats.map((stat) => (
             <div key={stat.label} className="bg-white/80 px-6 py-5 backdrop-blur">

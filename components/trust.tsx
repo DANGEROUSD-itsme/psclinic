@@ -1,5 +1,6 @@
 "use client";
 
+import { Rain } from "@/components/rain";
 import { Reveal, RevealGroup, RevealItem, SectionSeam } from "@/components/ui";
 import { patientStories, trustStats } from "@/lib/site";
 
@@ -20,6 +21,10 @@ export function Trust() {
             "radial-gradient(60% 60% at 20% 15%, rgba(56,173,189,0.4) 0%, transparent 65%), radial-gradient(55% 55% at 85% 80%, rgba(209,118,75,0.25) 0%, transparent 68%)",
         }}
       />
+      <Rain />
+      {/* Dithers the dark gradient above so it doesn't band on real
+          displays — see the .u-grain comment in globals.css. */}
+      <div aria-hidden className="u-grain pointer-events-none absolute inset-0 -z-10" />
 
       <div className="u-container relative">
         <div className="max-w-2xl">

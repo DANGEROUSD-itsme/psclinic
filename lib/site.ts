@@ -37,7 +37,7 @@ export const clinic = {
 export const doctor = {
   name: "Dr Sanjay Sharma",
   role: "Founder & Lead Specialist",
-  photo: "/team/dr-sanjay-sharma.png",
+  photo: "/team/dr-sanjay-sharma.jpg",
   quals: "MBBS (UWA), FRACS (Cardiothoracic Surgery)",
   quote:
     "The delight of shaking a patient's dry hand after surgery is one of the most gratifying aspects of being a surgeon.",
