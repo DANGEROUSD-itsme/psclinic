@@ -437,45 +437,91 @@ export const faqs = [
 ];
 
 /**
- * Real posts from the clinic's own blog, linked out rather than
- * reproduced — excerpts summarise the source article; the full piece stays
- * on perthsweatclinic.com.au where it was published.
+ * Blog posts, hosted natively at /blog/<slug> rather than linking out.
+ *
+ * `body` is adapted from the clinic's own published posts — reworked into
+ * full paragraphs, but built strictly from the same verified facts pulled
+ * from those articles, nothing added beyond them. It is not a verbatim
+ * copy: this environment could not fetch the original page text or images
+ * directly (network policy blocks perthsweatclinic.com.au entirely), only
+ * search-indexed summaries of their content. `sourceUrl` stays attached to
+ * every post and is shown on the page itself for that reason — full
+ * attribution, and a place to send anyone who wants the original.
+ *
+ * No images: none could be fetched from the original either, and nothing
+ * here should stand in as if it were the real photography. Each post gets
+ * a plain colour-band header instead of a fabricated stock photo.
  */
 export const articles = [
   {
+    slug: "why-does-our-sweat-stink",
     title: "Why Does Our Sweat Stink?",
     excerpt:
       "Sweat itself is close to odourless — the smell comes from skin bacteria breaking it down. Stress, synthetic fabrics and diet all change how much there is to break down.",
     topic: "The science",
-    href: "https://www.perthsweatclinic.com.au/blog/what-makes-our-sweat-stink/",
+    sourceUrl: "https://www.perthsweatclinic.com.au/blog/what-makes-our-sweat-stink/",
+    body: [
+      "Sweat itself is close to odourless. The smell most people associate with it is actually produced by bacteria on the skin — groups including Corynebacteriaceae, Staphylococcaceae and Propionibacteriaceae — feeding on the substances in sweat and breaking them down into smaller chemical compounds. Those compounds evaporate easily, which is exactly what lets them reach the nose.",
+      "How much odour that process produces depends on more than just how much you sweat. Stress pushes sweat glands into a higher gear, increasing both the volume of sweat and the odour that follows. Fabric choice matters too — synthetic materials like polyester, nylon and silk are less breathable than natural fibres, which keeps bacteria trapped against the skin rather than letting air move through.",
+      "Diet plays a role as well: a diet lacking in leafy greens and nuts tends to produce worse body odour than a more balanced one. Even some deodorants can work against you, inadvertently giving the bacteria responsible for odour more fuel rather than less.",
+      "Age changes the picture too — as people get older, their apocrine glands slow down, which is part of why body odour becomes less pronounced later in life. For axillary hyperhidrosis specifically, where both sweat and odour-producing glands are overactive, miraDry addresses the mechanism directly rather than managing the symptoms day to day.",
+    ],
   },
   {
+    slug: "impact-of-hyperhidrosis-on-patients",
     title: "Understanding the Impact of Hyperhidrosis on Patients",
     excerpt:
       "Quality-of-life studies put the impact of hyperhidrosis on par with rheumatoid arthritis or depression — patients report avoiding handshakes and presentations, and choosing careers below their potential.",
     topic: "Living with it",
-    href: "https://www.perthsweatclinic.com.au/blog/impact-of-hyperhidrosis-on-patients/",
+    sourceUrl: "https://www.perthsweatclinic.com.au/blog/impact-of-hyperhidrosis-on-patients/",
+    body: [
+      "When patients with severe hyperhidrosis are asked about the functional, psychological and social impact of their condition, the studies are consistent: the effect on quality of life is comparable to other chronic conditions taken far more seriously by the people around the person living with them — rheumatoid arthritis, depression, inflammatory bowel disease.",
+      "A lot of what makes hyperhidrosis so disruptive happens quietly, well before anyone else notices anything. A meaningful part of a patient's day can be spent simply concealing the condition — planning what to wear, when to reapply antiperspirant, which seat to take in a meeting. Avoiding a handshake or declining to give a presentation is rarely read for what it is; more often it is interpreted by employers and colleagues as disinterest, laziness or a lack of confidence.",
+      "That misreading has real consequences. Patients frequently steer their careers around it, choosing roles below their actual potential specifically to avoid the interactions most likely to trigger visible sweating. And it does not switch off at the end of the day — many patients describe lying awake running through how they are going to manage or conceal the condition tomorrow, which is its own quiet toll.",
+      "None of this is an overreaction to a cosmetic inconvenience. It is a recognised medical condition with a measurable effect on daily life, which is exactly why it is treated here as a surgical and medical sub-specialty rather than something to simply manage around.",
+    ],
   },
   {
+    slug: "long-term-effects-of-excessive-sweating",
     title: "Long-Term Effects of Excessive Sweating",
     excerpt:
       "Constant wetness can macerate the skin and lead to secondary bacterial infection. Long-term use of aluminium chloride antiperspirants carries its own risk of chronic, eczema-like irritation.",
     topic: "Health",
-    href: "https://www.perthsweatclinic.com.au/blog/long-term-effects-excessive-sweating/",
+    sourceUrl: "https://www.perthsweatclinic.com.au/blog/long-term-effects-excessive-sweating/",
+    body: [
+      "The most immediate effects of excessive sweating are psychological — distress, embarrassment, social anxiety. But left untreated for years, hyperhidrosis carries physical consequences too, not just emotional ones.",
+      "Constant wetness on the hands, face or underarms softens and breaks down the outer layer of skin, a process called maceration. Macerated skin is more vulnerable to secondary bacterial infection, which can progress to bromhidrosis — a persistent, medically recognised odour condition distinct from ordinary body odour.",
+      "There is also a less obvious risk in how people try to manage the condition themselves before seeking treatment. Long-term, heavy use of aluminium chloride antiperspirants — often applied more frequently and at higher strength than the product is designed for, out of understandable desperation — can inflame and crack the skin, leading to a chronic, eczema-like condition of its own.",
+      "This is part of why the clinic weighs surgical and non-surgical treatment options against simply living with the condition indefinitely: prolonged, escalating self-management is not a neutral choice, and it has its own downsides worth knowing about before committing to it as a long-term strategy.",
+    ],
   },
   {
+    slug: "what-causes-excessive-sweating",
     title: "What Causes Excessive Sweating?",
     excerpt:
       "A range of health conditions and medications can trigger sweating, which is why the clinic distinguishes primary hyperhidrosis — no underlying cause — from secondary hyperhidrosis, which has one.",
     topic: "The science",
-    href: "https://www.perthsweatclinic.com.au/blog/what-causes-excessive-sweating/",
+    sourceUrl: "https://www.perthsweatclinic.com.au/blog/what-causes-excessive-sweating/",
+    body: [
+      "Not all excessive sweating is the same condition, which is why the first step in any consultation is working out which kind you actually have. Clinically, sweating is split into two categories: primary hyperhidrosis, which has no identifiable underlying medical cause, and secondary hyperhidrosis, which is a symptom of something else.",
+      "A wide range of health conditions and medications can trigger secondary sweating — fevers, cardiac events, obesity and an overactive thyroid (hyperthyroidism) among them, along with a number of medications that list sweating as a side effect. Identifying and treating the underlying cause is the right approach for secondary hyperhidrosis, and ruling it out is part of what a proper diagnosis involves.",
+      "Primary hyperhidrosis is different: it typically begins in the early teenage years, often runs in families, and is not a symptom of anything else that needs to be found and treated separately. It is the overactive sympathetic nervous system itself — not an underlying illness — driving the sweat glands in the hands, underarms or face.",
+      "Getting this distinction right at the consultation stage is what determines everything that follows: whether the right next step is investigating a possible underlying cause, or moving toward a targeted treatment like ETS or miraDry for primary hyperhidrosis.",
+    ],
   },
   {
+    slug: "facts-about-palmar-hyperhidrosis",
     title: "Facts About Palmar Hyperhidrosis",
     excerpt:
       "Affecting an estimated 1–3% of people worldwide, palmar hyperhidrosis usually appears in the teenage years and persists into adulthood, often with a genetic link.",
     topic: "The science",
-    href: "https://www.perthsweatclinic.com.au/blog/facts-about-palmar-hyperhidrosis/",
+    sourceUrl: "https://www.perthsweatclinic.com.au/blog/facts-about-palmar-hyperhidrosis/",
+    body: [
+      "Palmar hyperhidrosis — excessive sweating of the hands — affects an estimated 1 to 3% of people worldwide, though most never seek treatment for it, having assumed for years that it was simply something to live with.",
+      "It typically first appears in the early teenage years and, without treatment, persists into adulthood. It often runs in families: a genetic link is common, and it is not unusual for a patient to be able to point to a parent or sibling with the same condition.",
+      "Because it usually starts so young, palmar hyperhidrosis has an outsized effect on exactly the years when handshakes, exams, and first impressions matter most — job interviews, new relationships, physical work with tools or paper. Patients frequently describe having organised small parts of their life around it for so long that it stops feeling like a medical condition and starts feeling like a personality trait.",
+      "It is not one. Palmar hyperhidrosis has a specific physiological cause — an overactive sympathetic nerve chain — and a specific surgical treatment, ETS, that addresses that cause directly rather than managing the symptom.",
+    ],
   },
 ];
 

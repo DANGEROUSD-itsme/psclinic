@@ -1,28 +1,16 @@
 "use client";
 
-import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
-import { articles, clinic } from "@/lib/site";
+import Link from "next/link";
 
-function ExternalIcon() {
-  return (
-    <svg aria-hidden viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-      <path
-        d="M6.5 3.5H3.5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-3M9.5 2.5h4v4M13.2 2.8 7 9"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
+import { getTopicStyle } from "@/lib/blog";
+import { articles } from "@/lib/site";
 
 /**
- * The Learn hub.
+ * The Learn hub teaser, on the homepage.
  *
- * Each card links to the real, existing post on perthsweatclinic.com.au —
- * the excerpt summarises it, the full article stays where it was published
- * rather than being reproduced here.
+ * Full posts live at /blog/<slug> — this is a preview grid linking into
+ * them, not the content itself.
  */
 export function Learn() {
   return (
@@ -36,39 +24,39 @@ export function Learn() {
         />
 
         <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2" childDelay={0.07}>
-          {articles.map((article) => (
-            <RevealItem key={article.title} className="h-full">
-              <a
-                href={article.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-card border border-line bg-white/80 p-8 transition duration-300 ease-out-soft hover:-translate-y-1 hover:border-clinical-200 hover:shadow-float sm:p-9"
-              >
-                <span className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-clinical-600">
-                  {article.topic}
-                </span>
-                <h3 className="mt-4 font-display text-xl text-ink">
-                  {article.title}
-                </h3>
-                <p className="mt-4 text-slate">{article.excerpt}</p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-clinical-700">
-                  Read on perthsweatclinic.com.au
-                  <ExternalIcon />
-                </span>
-              </a>
-            </RevealItem>
-          ))}
+          {articles.map((article) => {
+            const style = getTopicStyle(article.topic);
+            return (
+              <RevealItem key={article.slug} className="h-full">
+                <Link
+                  href={`/blog/${article.slug}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-white/80 transition duration-300 ease-out-soft hover:-translate-y-1 hover:border-clinical-200 hover:shadow-float"
+                >
+                  <div className={`h-2 w-full bg-gradient-to-r ${style.wash}`} />
+                  <div className="flex flex-1 flex-col p-8 sm:p-9">
+                    <span
+                      className={`text-[0.68rem] font-semibold uppercase tracking-[0.16em] ${style.accent}`}
+                    >
+                      {article.topic}
+                    </span>
+                    <h3 className="mt-4 font-display text-xl text-ink">
+                      {article.title}
+                    </h3>
+                    <p className="mt-4 text-slate">{article.excerpt}</p>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-clinical-700">
+                      Read the article
+                      <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </Link>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
 
         <Reveal>
           <div className="mt-10">
-            <ButtonLink
-              href={`${clinic.url}/blog/`}
-              target="_blank"
-              rel="noopener noreferrer"
-              tone="outline"
-              size="lg"
-            >
+            <ButtonLink href="/blog" tone="outline" size="lg">
               Read the full blog
               <ArrowRight />
             </ButtonLink>
