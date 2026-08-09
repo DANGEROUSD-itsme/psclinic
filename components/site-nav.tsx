@@ -50,10 +50,10 @@ function Wordmark({
         from feeling cramped on the narrowest phones.
       */}
       <span className="leading-tight">
-        <span className="block whitespace-nowrap font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
+        <span className="block whitespace-nowrap font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
           Perth Sweat Clinic
         </span>
-        <span className="hidden whitespace-nowrap text-[0.7rem] uppercase tracking-[0.14em] text-muted sm:block">
+        <span className="hidden whitespace-nowrap text-sm uppercase tracking-[0.14em] text-muted sm:block">
           Hyperhidrosis specialists
         </span>
       </span>
