@@ -130,7 +130,7 @@ export const conditions: {
       "Choosing where to sit, what to hold, who to greet",
     ],
     treatment: "Endoscopic Thoracic Sympathectomy (ETS)",
-    treatmentHref: "#ets",
+    treatmentHref: "/#ets",
   },
   {
     id: "underarms",
@@ -146,7 +146,7 @@ export const conditions: {
       "Antiperspirants that stopped working years ago",
     ],
     treatment: "miraDry",
-    treatmentHref: "#miradry",
+    treatmentHref: "/#miradry",
   },
   {
     id: "face",
@@ -162,7 +162,7 @@ export const conditions: {
       "Blushing that arrives faster than you can explain it",
     ],
     treatment: "Endoscopic Thoracic Sympathectomy (ETS)",
-    treatmentHref: "#ets",
+    treatmentHref: "/#ets",
   },
 ];
 
@@ -283,7 +283,7 @@ export const treatments = [
     ],
     price: "Fully covered by private health funds",
     priceNote: "Initial consultation $300 with a valid GP referral",
-    href: "#ets",
+    href: "/#ets",
   },
   {
     id: "miradry",
@@ -300,7 +300,7 @@ export const treatments = [
     ],
     price: "$2,900",
     priceNote: "Complete treatment · second treatment if needed $2,400",
-    href: "#miradry",
+    href: "/#miradry",
   },
   {
     id: "consult",
@@ -317,7 +317,7 @@ export const treatments = [
     ],
     price: "$300",
     priceNote: "Medicare rebate $86.15 with a valid GP referral",
-    href: "#contact",
+    href: "/#contact",
   },
 ];
 
@@ -525,11 +525,18 @@ export const articles = [
   },
 ];
 
+/**
+ * All internal same-page anchors, everywhere on the site, are absolute
+ * (`/#slug`) rather than bare (`#slug`). SiteNav and Footer render on every
+ * route, not just the homepage where these sections actually live — a bare
+ * hash on `/blog` just rewrites the current URL's fragment and goes
+ * nowhere, since there's no matching id on that page to scroll to.
+ */
 export const navLinks = [
-  { label: "The condition", href: "#conditions" },
-  { label: "Our team", href: "#doctor" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Your journey", href: "#journey" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "The condition", href: "/#conditions" },
+  { label: "Our team", href: "/#doctor" },
+  { label: "Treatments", href: "/#treatments" },
+  { label: "Your journey", href: "/#journey" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/#faq" },
 ];

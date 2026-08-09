@@ -56,7 +56,7 @@ export function EtsExplainer() {
 
             <Reveal>
               <div className="mt-9">
-                <ButtonLink href="#contact" size="lg">
+                <ButtonLink href="/#contact" size="lg">
                   Discuss ETS with Dr Sharma
                   <ArrowRight />
                 </ButtonLink>

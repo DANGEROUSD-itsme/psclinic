@@ -93,7 +93,7 @@ export function Pricing() {
             </div>
 
             <div className="lg:text-right">
-              <ButtonLink href="#contact" size="lg">
+              <ButtonLink href="/#contact" size="lg">
                 Book a consultation
                 <ArrowRight />
               </ButtonLink>

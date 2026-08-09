@@ -68,7 +68,7 @@ export function Footer() {
               ))}
               <li>
                 <Link
-                  href="#locations"
+                  href="/#locations"
                   className="text-sm text-slate transition-colors duration-300 hover:text-clinical-700"
                 >
                   Locations

@@ -58,7 +58,7 @@ export default function BlogIndexPage() {
 
           <Reveal>
             <div className="mt-10">
-              <ButtonLink href="#contact" size="lg">
+              <ButtonLink href="/#contact" size="lg">
                 Book a consultation
                 <ArrowRight />
               </ButtonLink>

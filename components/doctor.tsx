@@ -135,7 +135,7 @@ export function Doctor() {
 
           <Reveal>
             <div className="mt-11">
-              <ButtonLink href="#contact" tone="clinical" size="lg">
+              <ButtonLink href="/#contact" tone="clinical" size="lg">
                 Consult with Dr Sharma
                 <ArrowRight />
               </ButtonLink>

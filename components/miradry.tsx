@@ -165,7 +165,7 @@ export function MiraDry() {
 
             <Reveal>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <ButtonLink href="#contact" size="lg">
+                <ButtonLink href="/#contact" size="lg">
                   Book a miraDry consultation
                   <ArrowRight />
                 </ButtonLink>

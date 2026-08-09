@@ -13,16 +13,23 @@ import { clinic, navLinks } from "@/lib/site";
 function Wordmark() {
   return (
     <Link href="#main" className="group flex shrink-0 items-center gap-3">
+      {/*
+        Sized up from the original 36px badge so it actually reads as a
+        mark rather than a favicon next to the wordmark, while staying well
+        short of competing with the nav's own 80px height (h-20) for
+        attention. shadow-lift gives it a touch of the same lift the card
+        surfaces get elsewhere, rather than sitting flat.
+      */}
       <span
         aria-hidden
-        className="relative flex h-9 w-9 items-center justify-center rounded-full bg-clinical-700"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-clinical-700 shadow-lift transition-transform duration-300 ease-out-soft group-hover:scale-105 sm:h-12 sm:w-12"
       >
         {/* A droplet, resolving. */}
-        <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]">
+        <svg viewBox="0 0 20 20" fill="none" className="h-[22px] w-[22px] sm:h-6 sm:w-6">
           <path
             d="M10 3.5c2.6 3 4 5 4 6.8a4 4 0 1 1-8 0c0-1.8 1.4-3.8 4-6.8Z"
             stroke="white"
-            strokeWidth="1.4"
+            strokeWidth="1.5"
             strokeLinejoin="round"
           />
         </svg>
@@ -111,7 +118,7 @@ export function SiteNav() {
             {clinic.phone}
           </a>
           <span className="hidden sm:contents">
-            <ButtonLink href="#contact" className="whitespace-nowrap">
+            <ButtonLink href="/#contact" className="whitespace-nowrap">
               Book a consultation
             </ButtonLink>
           </span>
@@ -171,7 +178,7 @@ export function SiteNav() {
 
               <div className="mt-4 flex items-center gap-3 border-t border-line pt-5">
                 <ButtonLink
-                  href="#contact"
+                  href="/#contact"
                   size="lg"
                   className="flex-1"
                   onClick={() => setMenuOpen(false)}

@@ -147,11 +147,11 @@ export function Hero() {
             transition={{ duration: 0.7, ease: EASE_OUT_SOFT, delay: 0.24 }}
             className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <ButtonLink href="#contact" size="lg">
+            <ButtonLink href="/#contact" size="lg">
               Book a consultation
               <ArrowRight />
             </ButtonLink>
-            <ButtonLink href="#conditions" tone="outline" size="lg">
+            <ButtonLink href="/#conditions" tone="outline" size="lg">
               Which type affects you?
             </ButtonLink>
           </motion.div>
