@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { ArrowRight, Card, Reveal, RevealGroup, RevealItem, SectionHeading } from "@/components/ui";
+import { ArrowRight, Card, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
 import { treatments } from "@/lib/site";
 
 function CheckMark() {
@@ -26,7 +26,8 @@ function CheckMark() {
 
 export function Treatments() {
   return (
-    <section id="treatments" className="bg-bone py-24 sm:py-32">
+    <section id="treatments" className="relative isolate bg-bone py-24 sm:py-32">
+      <SectionSeam from="shell" />
       <div className="u-container">
         <SectionHeading
           label="Treatments"

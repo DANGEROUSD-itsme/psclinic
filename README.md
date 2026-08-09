@@ -45,28 +45,33 @@ that is what keeps the choreography reading as one system.
 
 ## The WebGL moments
 
-Three, not everywhere:
+Two, not everywhere:
 
 1. **`webgl/dry-hand-field`** — the hero. Droplets as GPU points on the off-white
    base. Each has its own evaporation threshold, so scrolling clears the field
    unevenly the way a real surface dries; the cursor drags a local drying halo.
-2. **`webgl/nerve-chain`** — the ETS explainer. The sympathetic chain, its ganglia
-   and the rib cage, rotated directly by scroll position. The nerve signal travels
-   toward the hands until the ablation step, after which it cannot get past the
-   treated segment. This replaces the embedded explainer video.
-3. **`webgl/condition-field`** — the condition switcher. A procedural field per
+2. **`webgl/condition-field`** — the condition switcher. A procedural field per
    sub-type, with a ripple that distorts the surface as it sweeps between them.
+
+There used to be a third — a scroll-scrubbed 3D animation of the sympathetic
+nerve chain "switching off" for the ETS explainer. It was removed: a stylised
+animation of a surgical mechanism on a marketing page risks reading as more
+clinically authoritative than the page can responsibly back up, and it shipped
+alongside an invented minute-by-minute procedure-day schedule that overclaimed
+certainty about hospital scheduling. `components/ets-explainer.tsx` now states
+plainly what the procedure treats, where it happens and its real risks, and
+routes everything else — the technique, what to expect — to the consultation,
+where it belongs.
 
 ### Guardrails
 
 Every canvas is behind `useWebGLEligible()` (`lib/hooks.ts`), which opts out on
 `prefers-reduced-motion`, on missing WebGL support, and on devices reporting very
 limited cores or memory. Canvases mount on approach and unmount off-screen via
-`useNearViewport`, so at most one or two contexts are ever alive.
+`useNearViewport`, so at most one context is ever alive.
 
 Each has a real static fallback, not a blank box: the hero falls back to the
-`u-wash` gradient, the ETS model to an inline SVG that still shows the treated
-segment, and the condition field to a per-condition CSS gradient.
+`u-wash` gradient, and the condition field to a per-condition CSS gradient.
 
 ## Sound
 
@@ -105,16 +110,26 @@ so figures cannot drift between sections. Structured data (`MedicalClinic`,
 
 ## Known gaps — things needing the clinic's input
 
-These are deliberate blanks, not oversights:
-
-- **Dr Sharma's portrait.** `components/doctor.tsx` has a designed placeholder in a
-  4:5 frame ready for an `<Image>` drop-in. Bright, natural lighting; clinical
-  rather than corporate.
+- **Photos of the team.** This is a hard blocker, not a choice: the sandbox this
+  site was built in cannot reach `perthsweatclinic.com.au` at all — both
+  `curl` and the fetch tooling get a `403` from the network's egress policy —
+  so no image could be downloaded from the live site to reuse here.
+  `components/doctor.tsx` has a designed placeholder in a 4:5 frame, ready for
+  an `<Image>` drop-in the moment real photos are supplied directly (upload,
+  or a Drive/Dropbox link an operator can fetch), for both Dr Sharma and the
+  clinical nurse coordinator introduced in the care-team card beneath his bio.
+- **The nurse coordinator's name.** Her role, qualifications and career history
+  in `careTeam` (`lib/site.ts`) are sourced from the clinic's own published
+  About page — but that page does not give a personal name, so none is
+  invented here. Replace `careTeam[0].name` directly once the clinic confirms
+  one, and whether there are other staff (additional doctors, admin, reception)
+  worth introducing the same way.
 - **Patient stories.** `patientStories` in `lib/site.ts` is intentionally empty.
   Nothing on this site should be invented on a patient's behalf. Add consented,
   anonymised quotes and the block on the Results section appears automatically.
-- **Blog posts.** The Learn hub shows summaries of the four existing articles.
-  Once the posts are migrated to `/learn/<slug>` routes, give each entry in
-  `articles` an `href` and wrap the card in a `<Link>`.
 - **Booking.** The form is an enquiry flow, not live scheduling. Wiring it to a
   real booking system is a follow-up.
+
+The Learn hub's five posts (`articles` in `lib/site.ts`) link out to the real
+articles on `perthsweatclinic.com.au/blog/` with excerpts sourced from them —
+not invented, and not reproduced in full; each card opens the original.

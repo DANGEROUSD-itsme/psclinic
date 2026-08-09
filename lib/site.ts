@@ -64,6 +64,14 @@ export const doctor = {
       label: "Fremantle Hospital",
       detail: "Head of Department, Cardiothoracic Surgery 2011–2015",
     },
+    {
+      label: "The Mount Hospital",
+      detail: "Medical Advisory Committee and Clinical Review Committee",
+    },
+    {
+      label: "Royal College of Surgeons",
+      detail: "Senior Instructor",
+    },
   ],
   milestones: [
     { year: "2004", event: "Commenced practice in Perth — Mount Hospital and Fremantle Hospital" },
@@ -72,6 +80,24 @@ export const doctor = {
     { year: "2015", event: "Transferred to Fiona Stanley Hospital; established the Joondalup program" },
   ],
 } as const;
+
+/**
+ * The wider care team — Dr Sharma leads the practice, but he is not the
+ * only person a patient deals with. The nurse coordinator's biographical
+ * facts below are sourced from the clinic's own published "About Us" page;
+ * no personal name is published there, so none is invented here. Update
+ * `name` directly once the clinic confirms one for attribution.
+ */
+export const careTeam = [
+  {
+    name: "Clinical Nurse Coordinator",
+    role: "Patient care & theatre coordination",
+    quals:
+      "B.Sc. Nursing, Curtin University · Grad. Cert. Clinical Nursing, University of Notre Dame Fremantle",
+    summary:
+      "Trained as a Registered Nurse at Curtin University before joining The Mount Hospital in 2012, working in the operating theatre and on the surgical cardiothoracic and vascular wards. Now coordinates patient care around every procedure at the clinic — the person most patients speak with between their consultation and their procedure day.",
+  },
+] as const;
 
 export type ConditionId = "hands" | "underarms" | "face";
 
@@ -168,50 +194,22 @@ export const journey = [
     step: "04",
     title: "Procedure day",
     body:
-      "For ETS: admitted around 6:30am, surgery around 8:00am, discharged by about 1:00pm — the same day. For miraDry: a single 60–90 minute appointment at the Mount Hospital suite.",
+      "ETS is a day procedure — you are admitted, treated and discharged the same day, with no overnight stay. miraDry is a single in-office appointment of around 60–90 minutes. Exact timing on the day is confirmed with you beforehand, not estimated here.",
     meta: "Day procedure — no overnight stay",
   },
   {
     step: "05",
     title: "Recovery",
     body:
-      "After ETS: about an hour in recovery, a chest X-ray to confirm the lung has fully expanded, then home with simple painkillers. After miraDry: ice packs, some swelling that settles.",
+      "After ETS, a short period in recovery and a chest X-ray precede discharge, with simple painkillers usually all that is needed afterwards. After miraDry, ice packs are applied and any swelling settles over the following days.",
     meta: "Home the same day",
   },
   {
     step: "06",
     title: "Results",
     body:
-      "With ETS, dry hands are visible in theatre — before you have left the operating room. With miraDry, sweat and odour glands are destroyed permanently and do not regenerate.",
+      "Many ETS patients notice a difference as soon as they wake from surgery. With miraDry, sweat and odour glands are destroyed permanently and do not regenerate. The specifics of what to expect for you are covered in your consultation, not generalised here.",
     meta: "Follow-up at 3 weeks",
-  },
-];
-
-export const etsSteps = [
-  {
-    title: "A single 5mm incision per side",
-    body:
-      "Keyhole access under general anaesthetic, delivered through a laryngeal mask rather than a tube down the throat.",
-  },
-  {
-    title: "Camera-guided, inside the chest",
-    body:
-      "An endoscope locates the sympathetic nerve chain running over the 2nd and 3rd ribs — the pathway driving the sweat glands in your hands and face.",
-  },
-  {
-    title: "The lung is not deflated",
-    body:
-      "Dr Sharma is one of few surgeons able to perform the procedure without collapsing the lung, which meaningfully shortens recovery.",
-  },
-  {
-    title: "The nerve pathway is ablated",
-    body:
-      "The overactive segment is cauterised. The signal telling those glands to sweat simply stops arriving.",
-  },
-  {
-    title: "Dry hands, seen in theatre",
-    body:
-      "The change is immediate and visible on the operating table — not something you wait weeks to find out about.",
   },
 ];
 
@@ -273,10 +271,10 @@ export const treatments = [
     summary:
       "The clinic's flagship surgical procedure, offered once conservative treatments have failed. Minimally invasive keyhole surgery that permanently interrupts the overactive nerve signal.",
     points: [
-      "Day procedure — admitted ~6:30am, home by ~1:00pm",
-      "Single 5mm incision per side",
-      "Lung is not deflated — faster recovery",
-      "Dry hands visible in theatre",
+      "Day procedure — home the same day",
+      "Minimally invasive keyhole technique",
+      "General anaesthetic, in an accredited hospital",
+      "Full explanation of technique and risks at consultation",
     ],
     price: "Fully covered by private health funds",
     priceNote: "Initial consultation $300 with a valid GP referral",
@@ -320,7 +318,7 @@ export const treatments = [
 
 export const trustStats = [
   { value: "85%", label: "of miraDry patients need one treatment only", detail: "Treated at level 5" },
-  { value: "Same day", label: "discharge after ETS surgery", detail: "In at 6:30am, home by 1:00pm" },
+  { value: "Same day", label: "discharge after ETS surgery", detail: "No overnight hospital stay" },
   { value: "TGA + FDA", label: "approved miraDry technology", detail: "TGA 2014 · FDA 2011" },
   { value: "Permanent", label: "results — glands do not regenerate", detail: "No maintenance treatments" },
 ];
@@ -425,7 +423,7 @@ export const faqs = [
   },
   {
     q: "How soon will I see results?",
-    a: "With ETS, hands are dry in theatre — the change is visible before you leave the operating room. With miraDry, the reduction in sweat and odour is immediate, with the full result settling over the following weeks.",
+    a: "Many ETS patients notice a difference as soon as they wake from surgery. With miraDry, the reduction in sweat and odour is immediate, with the full result settling over the following weeks. Dr Sharma will give you a realistic picture specific to you at your consultation.",
   },
   {
     q: "Will ETS help with facial blushing?",
@@ -433,36 +431,52 @@ export const faqs = [
   },
 ];
 
+/**
+ * Real posts from the clinic's own blog, linked out rather than
+ * reproduced — excerpts summarise the source article; the full piece stays
+ * on perthsweatclinic.com.au where it was published.
+ */
 export const articles = [
   {
-    title: "What makes our sweat stink?",
+    title: "Why Does Our Sweat Stink?",
     excerpt:
-      "Sweat itself is close to odourless. Understanding what actually creates body odour explains why treating the apocrine glands matters as much as treating the sweat.",
+      "Sweat itself is close to odourless — the smell comes from skin bacteria breaking it down. Stress, synthetic fabrics and diet all change how much there is to break down.",
     topic: "The science",
+    href: "https://www.perthsweatclinic.com.au/blog/what-makes-our-sweat-stink/",
   },
   {
-    title: "The long-term effects of excessive sweating",
+    title: "Understanding the Impact of Hyperhidrosis on Patients",
     excerpt:
-      "Beyond daily inconvenience, untreated hyperhidrosis carries a real risk of secondary skin infection — including bromhidrosis in severe cases.",
+      "Quality-of-life studies put the impact of hyperhidrosis on par with rheumatoid arthritis or depression — patients report avoiding handshakes and presentations, and choosing careers below their potential.",
+    topic: "Living with it",
+    href: "https://www.perthsweatclinic.com.au/blog/impact-of-hyperhidrosis-on-patients/",
+  },
+  {
+    title: "Long-Term Effects of Excessive Sweating",
+    excerpt:
+      "Constant wetness can macerate the skin and lead to secondary bacterial infection. Long-term use of aluminium chloride antiperspirants carries its own risk of chronic, eczema-like irritation.",
     topic: "Health",
+    href: "https://www.perthsweatclinic.com.au/blog/long-term-effects-excessive-sweating/",
   },
   {
-    title: "Hiding and reducing underarm sweat",
+    title: "What Causes Excessive Sweating?",
     excerpt:
-      "The strategies people use before seeking treatment — what genuinely helps, what only appears to, and the point at which it is worth escalating.",
-    topic: "Living with it",
+      "A range of health conditions and medications can trigger sweating, which is why the clinic distinguishes primary hyperhidrosis — no underlying cause — from secondary hyperhidrosis, which has one.",
+    topic: "The science",
+    href: "https://www.perthsweatclinic.com.au/blog/what-causes-excessive-sweating/",
   },
   {
-    title: "The emotional impact of living with hyperhidrosis",
+    title: "Facts About Palmar Hyperhidrosis",
     excerpt:
-      "Social withdrawal, avoidance and anxiety are the most under-discussed part of this condition, and often the reason patients finally seek help.",
-    topic: "Living with it",
+      "Affecting an estimated 1–3% of people worldwide, palmar hyperhidrosis usually appears in the teenage years and persists into adulthood, often with a genetic link.",
+    topic: "The science",
+    href: "https://www.perthsweatclinic.com.au/blog/facts-about-palmar-hyperhidrosis/",
   },
 ];
 
 export const navLinks = [
   { label: "The condition", href: "#conditions" },
-  { label: "Dr Sharma", href: "#doctor" },
+  { label: "Our team", href: "#doctor" },
   { label: "Treatments", href: "#treatments" },
   { label: "Your journey", href: "#journey" },
   { label: "Pricing", href: "#pricing" },

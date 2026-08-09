@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading } from "@/components/ui";
+import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
 import { pricing } from "@/lib/site";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="bg-bone py-24 sm:py-32">
+    <section id="pricing" className="relative isolate bg-bone py-24 sm:py-32">
+      <SectionSeam from="clinical-900" height="h-40 sm:h-52" />
       <div className="u-container">
         <SectionHeading
           label="Pricing"

@@ -1,12 +1,17 @@
 import Link from "next/link";
 
+import { SectionSeam } from "@/components/ui";
 import { clinic, navLinks } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line bg-shell">
+    <footer className="relative isolate bg-shell">
+      {/* Replaces the old hard border-t — a gradient blend from the
+          preceding bone section keeps the seam consistent with the rest of
+          the page instead of ending on a flat line. */}
+      <SectionSeam from="bone" />
       <div className="u-container py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>

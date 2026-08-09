@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import { ArrowRight, Button, Reveal, SectionLabel } from "@/components/ui";
+import { ArrowRight, Button, Reveal, SectionLabel, SectionSeam } from "@/components/ui";
 import { EASE_OUT_SOFT } from "@/lib/motion";
 import { clinic } from "@/lib/site";
 import { useSound } from "@/lib/use-sound";
@@ -68,7 +68,8 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-bone py-24 sm:py-32">
+    <section id="contact" className="relative isolate bg-bone py-24 sm:py-32">
+      <SectionSeam from="shell" />
       <div className="u-container">
         <div className="overflow-hidden rounded-panel border border-line bg-shell shadow-lift">
           <div className="grid lg:grid-cols-[0.85fr_1fr]">

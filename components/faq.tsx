@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import { Reveal, SectionHeading } from "@/components/ui";
+import { Reveal, SectionHeading, SectionSeam } from "@/components/ui";
 import { EASE_OUT_SOFT } from "@/lib/motion";
 import { clinic, faqs } from "@/lib/site";
 
@@ -71,7 +71,8 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-shell py-24 sm:py-32">
+    <section id="faq" className="relative isolate bg-shell py-24 sm:py-32">
+      <SectionSeam from="bone" />
       <div className="u-container grid gap-14 lg:grid-cols-[0.8fr_1fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeading

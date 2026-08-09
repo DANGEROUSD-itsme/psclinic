@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
-import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel } from "@/components/ui";
+import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel, SectionSeam } from "@/components/ui";
 import { miradrySteps } from "@/lib/site";
 
 /**
@@ -119,7 +119,8 @@ function DepthDiagram() {
 
 export function MiraDry() {
   return (
-    <section id="miradry" className="bg-bone py-24 sm:py-32">
+    <section id="miradry" className="relative isolate bg-bone py-24 sm:py-32">
+      <SectionSeam from="shell" />
       <div className="u-container">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
           <div>

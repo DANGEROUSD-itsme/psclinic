@@ -1,15 +1,18 @@
 "use client";
 
-import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel } from "@/components/ui";
-import { doctor } from "@/lib/site";
+import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel, SectionSeam } from "@/components/ui";
+import { careTeam, doctor } from "@/lib/site";
 
 /**
- * Dr Sharma's credentials are the practice's single strongest asset, so
- * they are given a full section rather than a paragraph in an about page.
+ * Dr Sharma leads the practice and his credentials are its strongest single
+ * asset, so they get a full section rather than a paragraph in an about
+ * page — but he is not the only person a patient deals with. The care team
+ * strip at the end of this section introduces who else is involved.
  */
 export function Doctor() {
   return (
-    <section id="doctor" className="relative overflow-hidden bg-shell py-24 sm:py-32">
+    <section id="doctor" className="relative isolate overflow-hidden bg-shell py-24 sm:py-32">
+      <SectionSeam from="bone" />
       {/* Section-break wash — the only decorative layer down here. */}
       <div
         aria-hidden
@@ -79,7 +82,7 @@ export function Doctor() {
         {/* Bio */}
         <div>
           <Reveal>
-            <SectionLabel>Meet your surgeon</SectionLabel>
+            <SectionLabel>Meet the team</SectionLabel>
           </Reveal>
 
           <Reveal>
@@ -154,6 +157,49 @@ export function Doctor() {
             </div>
           </Reveal>
         </div>
+      </div>
+
+      {/* The wider care team. Dr Sharma leads the practice, but a patient's
+          day-to-day contact is often the nurse coordinator below. */}
+      <div className="u-container relative mt-20">
+        <Reveal>
+          <div className="rounded-panel border border-line bg-bone/80 p-8 backdrop-blur sm:p-10">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-clinical-600">
+              Care team
+            </p>
+            <h3 className="mt-4 font-display text-2xl text-ink">
+              Who else you will meet
+            </h3>
+            <p className="mt-3 max-w-2xl text-slate">
+              Dr Sharma leads every consultation and performs every
+              procedure, but he does not do it alone. Here is who else is
+              involved in your care.
+            </p>
+
+            <RevealGroup className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
+              <RevealItem className="bg-white px-7 py-7">
+                <p className="font-display text-lg text-ink">{doctor.name}</p>
+                <p className="mt-1 text-sm text-clinical-700">
+                  Founder & Lead Specialist
+                </p>
+                <p className="mt-3 text-sm text-slate">{doctor.quals}</p>
+              </RevealItem>
+
+              {careTeam.map((member) => (
+                <RevealItem key={member.name} className="bg-white px-7 py-7">
+                  <p className="font-display text-lg text-ink">
+                    {member.name}
+                  </p>
+                  <p className="mt-1 text-sm text-clinical-700">
+                    {member.role}
+                  </p>
+                  <p className="mt-3 text-sm text-slate">{member.quals}</p>
+                  <p className="mt-3 text-sm text-slate">{member.summary}</p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

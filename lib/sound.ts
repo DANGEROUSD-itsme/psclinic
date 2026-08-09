@@ -15,9 +15,17 @@
 
 const STORAGE_KEY = "psc-sound-enabled";
 
-/** Master ceiling, roughly -20dB relative to typical system volume. */
-const MASTER_GAIN = 0.1;
-const AMBIENT_GAIN = 0.035;
+/** Master ceiling, roughly -12dB relative to typical system volume. */
+const MASTER_GAIN = 0.35;
+/**
+ * The ambient bed's own level under the master gain.
+ *
+ * This used to compound to ~0.0035 of full scale against the old master —
+ * inaudible on real speakers, which read as "sound doesn't work" even
+ * though the graph was technically producing signal. Tuned back up so the
+ * bed is genuinely perceptible while still sitting well under the cues.
+ */
+const AMBIENT_GAIN = 0.16;
 
 type Cue = "droplet" | "chime";
 
@@ -115,8 +123,23 @@ class SoundEngine {
     }
 
     if (next) {
-      this.ensureContext();
-      this.startAmbient();
+      const ctx = this.ensureContext();
+      if (ctx && this.master) {
+        const master = this.master;
+        // Sequenced explicitly rather than fired alongside resume(): on
+        // Safari in particular, starting nodes before resume() has actually
+        // settled can leave them silently stuck in a suspended graph. This
+        // also guarantees an audible confirmation the instant the toggle is
+        // pressed, rather than only the (very subtle) ambient bed two and a
+        // half seconds later.
+        const begin = () => {
+          if (!this.enabled) return;
+          this.playActivation(ctx, master);
+          this.startAmbient();
+        };
+        if (ctx.state === "running") begin();
+        else void ctx.resume().then(begin);
+      }
     } else {
       this.stopAmbient();
     }
@@ -165,7 +188,10 @@ class SoundEngine {
 
     const gain = ctx.createGain();
     gain.gain.value = 0;
-    gain.gain.linearRampToValueAtTime(AMBIENT_GAIN, ctx.currentTime + 2.5);
+    // Faster than before (was 2.5s): the activation tone already confirms
+    // sound is on, but the bed itself should still arrive quickly enough
+    // that a visitor doesn't conclude nothing happened while waiting.
+    gain.gain.linearRampToValueAtTime(AMBIENT_GAIN, ctx.currentTime + 1.1);
 
     source.connect(band).connect(gain).connect(this.master);
     source.start();
@@ -201,6 +227,32 @@ class SoundEngine {
 
     if (cue === "droplet") this.playDroplet(ctx, this.master);
     if (cue === "chime") this.playChime(ctx, this.master);
+  }
+
+  /**
+   * Plays the instant sound is switched on — proof the toggle worked,
+   * since the ambient bed alone is deliberately too subtle to serve as
+   * confirmation by itself.
+   */
+  private playActivation(ctx: AudioContext, out: GainNode) {
+    const now = ctx.currentTime;
+    [
+      { freq: 660, at: 0 },
+      { freq: 990, at: 0.09 },
+    ].forEach(({ freq, at }) => {
+      const osc = ctx.createOscillator();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, now + at);
+      gain.gain.exponentialRampToValueAtTime(0.55, now + at + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + at + 0.16);
+
+      osc.connect(gain).connect(out);
+      osc.start(now + at);
+      osc.stop(now + at + 0.18);
+    });
   }
 
   /**

@@ -1,13 +1,17 @@
 "use client";
 
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui";
+import { Reveal, RevealGroup, RevealItem, SectionSeam } from "@/components/ui";
 import { patientStories, trustStats } from "@/lib/site";
 
 export function Trust() {
   return (
-    <section id="results" className="relative overflow-hidden bg-clinical-900 py-24 sm:py-32">
+    <section id="results" className="relative isolate overflow-hidden bg-clinical-900 py-24 sm:py-32">
       {/* The one dark moment on the site — a deliberate pause between the
-          treatment detail and the commercial sections. */}
+          treatment detail and the commercial sections. Both seams are wider
+          than usual: a light-to-dark transition needs a longer blend than a
+          same-tone one to avoid reading as a hard flash. */}
+      <SectionSeam from="shell" height="h-40 sm:h-52" />
+      <SectionSeam from="bone" edge="bottom" height="h-40 sm:h-52" />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-40"

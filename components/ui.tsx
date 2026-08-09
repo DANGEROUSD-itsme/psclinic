@@ -195,6 +195,46 @@ export function Button({
   );
 }
 
+/* -------------------------------------------------------------------- flow */
+
+/**
+ * Softens the seam between two adjacent sections of different background
+ * colour. Section backgrounds on this page alternate in flat blocks —
+ * without this, every transition is a hard horizontal line. Dropped as the
+ * first child of a section, it blends the incoming section's top edge from
+ * the previous section's colour down to transparent, so the colour change
+ * reads as a gradient rather than a cut.
+ *
+ * The parent section must have `relative isolate` classes. `isolate` gives
+ * the section its own stacking context, so this negative z-index is scoped
+ * to that section alone — it sits above the section's own background but
+ * behind every other child, positioned or not, without needing z-index
+ * bookkeeping on the rest of the section's content.
+ *
+ * `from` must be a token defined under `@theme` in globals.css (e.g.
+ * "bone", "shell", "clinical-900") — it is interpolated directly into a
+ * `var(--color-*)` reference.
+ */
+export function SectionSeam({
+  from,
+  edge = "top",
+  height = "h-28 sm:h-36",
+}: {
+  from: string;
+  edge?: "top" | "bottom";
+  height?: string;
+}) {
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-x-0 -z-10 ${edge === "top" ? "top-0" : "bottom-0"} ${height}`}
+      style={{
+        backgroundImage: `linear-gradient(to ${edge === "top" ? "bottom" : "top"}, var(--color-${from}), transparent)`,
+      }}
+    />
+  );
+}
+
 /* ------------------------------------------------------------------- cards */
 
 /**

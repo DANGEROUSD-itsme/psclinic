@@ -1,13 +1,14 @@
 "use client";
 
-import { Reveal, RevealGroup, RevealItem, SectionHeading } from "@/components/ui";
+import { Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
 import { clinic, locations } from "@/lib/site";
 
 const mapsQuery = encodeURIComponent(`${clinic.addressLine}, Australia`);
 
 export function Locations() {
   return (
-    <section id="locations" className="bg-shell py-24 sm:py-32">
+    <section id="locations" className="relative isolate bg-shell py-24 sm:py-32">
+      <SectionSeam from="bone" />
       <div className="u-container">
         <SectionHeading
           label="Locations"

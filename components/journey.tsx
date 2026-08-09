@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 
-import { Reveal, SectionLabel } from "@/components/ui";
+import { Reveal, SectionLabel, SectionSeam } from "@/components/ui";
 import { EASE_OUT_SOFT } from "@/lib/motion";
 import { journey } from "@/lib/site";
 
@@ -43,7 +43,8 @@ export function Journey() {
   const step = journey[activeStep];
 
   return (
-    <section id="journey" className="bg-shell">
+    <section id="journey" className="relative isolate bg-shell">
+      <SectionSeam from="bone" />
       <div className="u-container pt-24 sm:pt-32">
         <Reveal>
           <SectionLabel>Your journey</SectionLabel>

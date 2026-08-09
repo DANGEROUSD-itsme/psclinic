@@ -1,22 +1,33 @@
 "use client";
 
-import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading } from "@/components/ui";
+import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
 import { articles, clinic } from "@/lib/site";
+
+function ExternalIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+      <path
+        d="M6.5 3.5H3.5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-3M9.5 2.5h4v4M13.2 2.8 7 9"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 /**
  * The Learn hub.
  *
- * The practice already has genuinely useful articles; they were simply
- * disconnected from the service pages. Surfacing them here links the
- * authority content back into the treatment journey.
- *
- * Cards are summaries rather than links for now: the posts still live on the
- * existing WordPress blog. Once they are migrated to `/learn/<slug>` routes,
- * give each entry in `articles` an `href` and wrap the card in a <Link>.
+ * Each card links to the real, existing post on perthsweatclinic.com.au —
+ * the excerpt summarises it, the full article stays where it was published
+ * rather than being reproduced here.
  */
 export function Learn() {
   return (
-    <section id="learn" className="bg-bone py-24 sm:py-32">
+    <section id="learn" className="relative isolate bg-bone py-24 sm:py-32">
+      <SectionSeam from="shell" />
       <div className="u-container">
         <SectionHeading
           label="Learn"
@@ -27,7 +38,12 @@ export function Learn() {
         <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2" childDelay={0.07}>
           {articles.map((article) => (
             <RevealItem key={article.title} className="h-full">
-              <article className="flex h-full flex-col rounded-card border border-line bg-white/80 p-8 sm:p-9">
+              <a
+                href={article.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col rounded-card border border-line bg-white/80 p-8 transition duration-300 ease-out-soft hover:-translate-y-1 hover:border-clinical-200 hover:shadow-float sm:p-9"
+              >
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-clinical-600">
                   {article.topic}
                 </span>
@@ -35,14 +51,24 @@ export function Learn() {
                   {article.title}
                 </h3>
                 <p className="mt-4 text-slate">{article.excerpt}</p>
-              </article>
+                <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-clinical-700">
+                  Read on perthsweatclinic.com.au
+                  <ExternalIcon />
+                </span>
+              </a>
             </RevealItem>
           ))}
         </RevealGroup>
 
         <Reveal>
           <div className="mt-10">
-            <ButtonLink href={`${clinic.url}/blog`} tone="outline" size="lg">
+            <ButtonLink
+              href={`${clinic.url}/blog/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              tone="outline"
+              size="lg"
+            >
               Read the full blog
               <ArrowRight />
             </ButtonLink>
