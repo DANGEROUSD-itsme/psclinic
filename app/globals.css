@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ------------------------------------------------------------------
+   Perth Sweat Clinic — design tokens
+   Light, airy, clinical-premium. Off-white base, one clinical accent
+   (teal), one warm secondary reserved for calls to action.
+   ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces */
+  --color-bone: #fbfbf9;
+  --color-shell: #f4f7f7;
+  --color-mist: #e9f0f1;
+  --color-line: #e4eaea;
+  --color-line-strong: #cdd8d9;
+
+  /* Ink */
+  --color-ink: #0b1a1f;
+  --color-slate: #47585f;
+  --color-muted: #7a8b91;
+
+  /* Clinical accent */
+  --color-clinical-50: #eef9fb;
+  --color-clinical-100: #d2f0f4;
+  --color-clinical-200: #a9e1e9;
+  --color-clinical-300: #71ccd8;
+  --color-clinical-400: #38adbd;
+  --color-clinical-500: #1d8fa1;
+  --color-clinical-600: #157388;
+  --color-clinical-700: #145d6f;
+  --color-clinical-800: #164b5a;
+  --color-clinical-900: #163f4c;
+
+  /* Warm secondary — CTAs only */
+  --color-ember-100: #fbeade;
+  --color-ember-300: #f0b58e;
+  --color-ember-400: #e39468;
+  --color-ember-500: #d1764b;
+  --color-ember-600: #b95c33;
+  --color-ember-700: #974728;
+
+  /* Type */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-instrument), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --text-display-2xl: 4.75rem;
+  --text-display-2xl--line-height: 0.95;
+  --text-display-2xl--letter-spacing: -0.035em;
+  --text-display-xl: 3.75rem;
+  --text-display-xl--line-height: 1;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-lg: 2.875rem;
+  --text-display-lg--line-height: 1.06;
+  --text-display-lg--letter-spacing: -0.025em;
+  --text-display-md: 2.125rem;
+  --text-display-md--line-height: 1.12;
+  --text-display-md--letter-spacing: -0.02em;
+
+  /* Shape + depth — one shared language across every card surface */
+  --radius-card: 1.5rem;
+  --radius-panel: 2rem;
+
+  --shadow-lift: 0 1px 2px rgb(11 26 31 / 0.04), 0 12px 32px -12px rgb(11 26 31 / 0.12);
+  --shadow-float: 0 2px 4px rgb(11 26 31 / 0.04), 0 24px 60px -20px rgb(11 26 31 / 0.16);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Consumed by the WebGL layer so shaders inherit the palette. */
+    --gl-bg: 251 251 249;
+    --gl-accent: 29 143 161;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Generous line-height: the subject matter is emotionally sensitive
+       and the body copy should never feel cramped. */
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-clinical-200);
+    color: var(--color-clinical-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clinical-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* The scroll-driven sections rely on sticky positioning; make sure no
+     ancestor accidentally clips it. */
+  section {
+    overflow-x: clip;
+  }
+}
+
+@layer utilities {
+  .u-container {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 78rem;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .u-container {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Narrow measure for long-form reading passages. */
+  .u-measure {
+    max-width: 40rem;
+  }
+
+  .u-hairline {
+    border-color: var(--color-line);
+  }
+
+  /*
+    Keeps the hero droplet field clear of the headline.
+
+    On narrow screens the copy fills the whole hero, so the field fades in
+    from the top and sits at reduced opacity behind it. From large screens
+    up there is open space to the right of the copy column, so the mask
+    turns diagonal and the droplets gather over there at full strength.
+  */
+  .u-hero-mask {
+    opacity: 0.45;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgb(0 0 0 / 0.12) 52%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgb(0 0 0 / 0.12) 52%,
+      #000 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .u-hero-mask {
+      opacity: 1;
+      -webkit-mask-image: linear-gradient(
+        105deg,
+        transparent 12%,
+        rgb(0 0 0 / 0.18) 38%,
+        rgb(0 0 0 / 0.75) 66%,
+        #000 92%
+      );
+      mask-image: linear-gradient(
+        105deg,
+        transparent 12%,
+        rgb(0 0 0 / 0.18) 38%,
+        rgb(0 0 0 / 0.75) 66%,
+        #000 92%
+      );
+    }
+  }
+
+  /* Static fallback for the hero canvas: a soft light-refraction wash that
+     stands in for the particle field on low-power or reduced-motion. */
+  .u-wash {
+    background-image:
+      radial-gradient(60% 55% at 22% 28%, rgb(169 225 233 / 0.5) 0%, transparent 70%),
+      radial-gradient(50% 50% at 78% 22%, rgb(210 240 244 / 0.65) 0%, transparent 72%),
+      radial-gradient(70% 60% at 60% 88%, rgb(240 181 142 / 0.16) 0%, transparent 70%);
+  }
+}
+
+/* Anyone who has asked the system to reduce motion gets a calm, static
+   site: scroll-scrubbed effects collapse to plain opacity. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

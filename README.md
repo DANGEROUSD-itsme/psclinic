@@ -1,0 +1,120 @@
+# Perth Sweat Clinic
+
+A cinematic rebuild of [perthsweatclinic.com.au](https://perthsweatclinic.com.au) — a
+hyperhidrosis practice in Perth, WA, led by cardiothoracic surgeon Dr Sanjay Sharma.
+
+Light, airy, clinical-premium. Tailwind for the design system, a small number of
+WebGL moments where they earn their place, and static fallbacks everywhere they
+do not.
+
+## Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router, React 19) |
+| Styling | Tailwind CSS v4 (CSS-first `@theme` tokens) |
+| 3D / shaders | react-three-fiber + three |
+| Motion | `motion` (Framer Motion) — `useScroll` scrubbing, no GSAP |
+| Sound | Web Audio API, synthesised — zero audio assets |
+
+## Getting started
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+```
+
+## Design system
+
+Tokens live in `app/globals.css` under `@theme` — Tailwind v4 is CSS-first, so
+there is no `tailwind.config`. The palette is deliberately small:
+
+- **Surfaces** — `bone` (base), `shell`, `mist`, `line`
+- **Ink** — `ink`, `slate`, `muted`
+- **`clinical-*`** — the single accent, a clinical teal
+- **`ember-*`** — the warm secondary, reserved for calls to action
+
+Shape and depth are shared too (`rounded-card`, `rounded-panel`, `shadow-lift`,
+`shadow-float`) so conditions, journey steps, pricing and articles all sit on one
+card language.
+
+Motion variants are centralised in `lib/motion.ts`. Sections compose `Reveal` /
+`RevealGroup` from `components/ui.tsx` rather than defining their own timings —
+that is what keeps the choreography reading as one system.
+
+## The WebGL moments
+
+Three, not everywhere:
+
+1. **`webgl/dry-hand-field`** — the hero. Droplets as GPU points on the off-white
+   base. Each has its own evaporation threshold, so scrolling clears the field
+   unevenly the way a real surface dries; the cursor drags a local drying halo.
+2. **`webgl/nerve-chain`** — the ETS explainer. The sympathetic chain, its ganglia
+   and the rib cage, rotated directly by scroll position. The nerve signal travels
+   toward the hands until the ablation step, after which it cannot get past the
+   treated segment. This replaces the embedded explainer video.
+3. **`webgl/condition-field`** — the condition switcher. A procedural field per
+   sub-type, with a ripple that distorts the surface as it sweeps between them.
+
+### Guardrails
+
+Every canvas is behind `useWebGLEligible()` (`lib/hooks.ts`), which opts out on
+`prefers-reduced-motion`, on missing WebGL support, and on devices reporting very
+limited cores or memory. Canvases mount on approach and unmount off-screen via
+`useNearViewport`, so at most one or two contexts are ever alive.
+
+Each has a real static fallback, not a blank box: the hero falls back to the
+`u-wash` gradient, the ETS model to an inline SVG that still shows the treated
+segment, and the condition field to a per-condition CSS gradient.
+
+## Sound
+
+Off by default, toggled from the header, persisted to `localStorage`. Everything
+is synthesised with the Web Audio API — an ambient "dry air" bed built from
+filtered noise, a droplet tick when the hero field resolves, and a chime on a
+completed enquiry. No audio files, so the feature costs nothing at load.
+
+The `AudioContext` is only constructed when the visitor flips the toggle. On a
+return visit the stored preference is restored but audio waits for the first real
+interaction, since browsers require a gesture.
+
+## The enquiry form
+
+`app/api/enquiry/route.ts` validates and forwards enquiries. Nothing is stored or
+logged — these carry health information.
+
+Delivery uses the Resend REST API. Set these in Vercel → Project → Settings →
+Environment Variables:
+
+| Variable | Example |
+|---|---|
+| `RESEND_API_KEY` | `re_...` |
+| `ENQUIRY_TO_EMAIL` | `contact@perthsweatclinic.com.au` |
+| `ENQUIRY_FROM_EMAIL` | `website@perthsweatclinic.com.au` (must be a verified Resend sender) |
+
+**Until these are set the form returns a clear "not set up yet, please call"
+message rather than accepting an enquiry it cannot deliver.** A contact form that
+silently drops a patient enquiry is worse than no form at all.
+
+## Content
+
+All clinic facts, fees, copy and FAQs live in `lib/site.ts` — one source of truth,
+so figures cannot drift between sections. Structured data (`MedicalClinic`,
+`Physician`, `FAQPage`) in `app/layout.tsx` is generated from the same data.
+
+## Known gaps — things needing the clinic's input
+
+These are deliberate blanks, not oversights:
+
+- **Dr Sharma's portrait.** `components/doctor.tsx` has a designed placeholder in a
+  4:5 frame ready for an `<Image>` drop-in. Bright, natural lighting; clinical
+  rather than corporate.
+- **Patient stories.** `patientStories` in `lib/site.ts` is intentionally empty.
+  Nothing on this site should be invented on a patient's behalf. Add consented,
+  anonymised quotes and the block on the Results section appears automatically.
+- **Blog posts.** The Learn hub shows summaries of the four existing articles.
+  Once the posts are migrated to `/learn/<slug>` routes, give each entry in
+  `articles` an `href` and wrap the card in a `<Link>`.
+- **Booking.** The form is an enquiry flow, not live scheduling. Wiring it to a
+  real booking system is a follow-up.
