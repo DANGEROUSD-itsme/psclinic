@@ -119,6 +119,18 @@ export function Footer() {
             risks and benefits of any procedure with Dr Sharma.
           </p>
         </div>
+
+        <p className="mt-6 text-xs text-muted">
+          Site by{" "}
+          <a
+            href="https://studiosdpe.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate transition-colors duration-300 hover:text-clinical-700"
+          >
+            Dheera Jayachitra, Studio SDPE
+          </a>
+        </p>
       </div>
     </footer>
   );
