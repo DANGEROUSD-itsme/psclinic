@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Tracks `prefers-reduced-motion` reactively.
@@ -111,4 +111,57 @@ export function useScrolledPast(offset = 24): boolean {
   }, [offset]);
 
   return past;
+}
+
+/**
+ * Fixes a real Next.js `<Link>` quirk: clicking a hash link when the
+ * browser is already sitting at that exact URL (path *and* hash) is a
+ * no-op — the router sees the destination matches the current location and
+ * skips the navigation entirely, so nothing scrolls. That is exactly what
+ * happens after clicking "Book a consultation" once (landing on
+ * `/#contact`), scrolling back up by hand, and clicking it again: the URL
+ * never changed out from under it, so the second click does nothing.
+ *
+ * This bypasses the router for that one case. If the target id exists on
+ * the current page, it scrolls there directly and syncs the URL itself
+ * (push when the hash is actually changing, replace when it is not, so a
+ * repeat click never litters browser history) — Next's navigation only
+ * runs at all for hrefs it needs to, i.e. targets on a different page.
+ * Modified clicks (open in new tab, etc.) are left alone.
+ */
+export function useHashLinkClick() {
+  return useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const match = /^\/?#([\w-]+)$/.exec(href);
+      if (!match) return;
+
+      const id = match[1];
+      const el = document.getElementById(id);
+      // No matching id on this page — it lives elsewhere, so let Next's
+      // Link perform the real cross-page navigation instead.
+      if (!el) return;
+
+      event.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      const newHash = `#${id}`;
+      if (window.location.hash !== newHash) {
+        history.pushState(null, "", `/${newHash}`);
+      } else {
+        history.replaceState(null, "", `/${newHash}`);
+      }
+    },
+    [],
+  );
 }

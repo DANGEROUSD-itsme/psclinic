@@ -86,7 +86,7 @@ export function Hero() {
       ref={sectionRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative isolate flex min-h-[92svh] items-center overflow-hidden bg-bone pt-28 pb-20 sm:pt-32"
+      className="relative isolate flex min-h-[92svh] items-center overflow-hidden bg-bone pt-32 pb-20 sm:pt-36"
     >
       {/* Ambient wash. Doubles as the complete static fallback whenever the
           droplet field is not rendered. */}
@@ -137,8 +137,7 @@ export function Hero() {
             className="mt-7 max-w-xl text-lg text-slate sm:text-xl"
           >
             Excessive sweating of the hands, underarms and face, treated
-            permanently by a Harvard-trained cardiothoracic surgeon. Most
-            patients are home the same day.
+            permanently by a specialist cardiothoracic surgeon.
           </motion.p>
 
           <motion.div

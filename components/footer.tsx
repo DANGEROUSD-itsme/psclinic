@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 
 import { SectionSeam } from "@/components/ui";
+import { useHashLinkClick } from "@/lib/hooks";
 import { clinic, navLinks } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const handleHashClick = useHashLinkClick();
 
   return (
     <footer className="relative isolate bg-shell">
@@ -60,6 +64,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={(event) => handleHashClick(event, link.href)}
                     className="text-sm text-slate transition-colors duration-300 hover:text-clinical-700"
                   >
                     {link.label}
@@ -69,6 +74,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#locations"
+                  onClick={(event) => handleHashClick(event, "/#locations")}
                   className="text-sm text-slate transition-colors duration-300 hover:text-clinical-700"
                 >
                   Locations

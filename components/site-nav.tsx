@@ -6,26 +6,34 @@ import { useEffect, useState } from "react";
 
 import { SoundToggle } from "@/components/sound-toggle";
 import { ArrowRight, ButtonLink } from "@/components/ui";
-import { useScrolledPast } from "@/lib/hooks";
+import { useHashLinkClick, useScrolledPast } from "@/lib/hooks";
 import { EASE_OUT_SOFT } from "@/lib/motion";
 import { clinic, navLinks } from "@/lib/site";
 
-function Wordmark() {
+function Wordmark({
+  onHashClick,
+}: {
+  onHashClick: (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+}) {
   return (
-    <Link href="#main" className="group flex shrink-0 items-center gap-3">
+    <Link
+      href="#main"
+      onClick={(event) => onHashClick(event, "#main")}
+      className="group flex shrink-0 items-center gap-3"
+    >
       {/*
-        Sized up from the original 36px badge so it actually reads as a
-        mark rather than a favicon next to the wordmark, while staying well
-        short of competing with the nav's own 80px height (h-20) for
-        attention. shadow-lift gives it a touch of the same lift the card
-        surfaces get elsewhere, rather than sitting flat.
+        Sized up decisively so the mark reads as a real piece of the brand
+        in the header, not a small icon next to the wordmark, while the
+        nav's own height (h-24) grew to match rather than crowd it.
+        shadow-lift gives it a touch of the same lift the card surfaces get
+        elsewhere, rather than sitting flat.
       */}
       <span
         aria-hidden
-        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-clinical-700 shadow-lift transition-transform duration-300 ease-out-soft group-hover:scale-105 sm:h-12 sm:w-12"
+        className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-clinical-700 shadow-lift transition-transform duration-300 ease-out-soft group-hover:scale-105 sm:h-16 sm:w-16"
       >
         {/* A droplet, resolving. */}
-        <svg viewBox="0 0 20 20" fill="none" className="h-[22px] w-[22px] sm:h-6 sm:w-6">
+        <svg viewBox="0 0 20 20" fill="none" className="h-7 w-7 sm:h-8 sm:w-8">
           <path
             d="M10 3.5c2.6 3 4 5 4 6.8a4 4 0 1 1-8 0c0-1.8 1.4-3.8 4-6.8Z"
             stroke="white"
@@ -42,10 +50,10 @@ function Wordmark() {
         from feeling cramped on the narrowest phones.
       */}
       <span className="leading-tight">
-        <span className="block whitespace-nowrap font-display text-[0.82rem] font-semibold tracking-tight text-ink sm:text-[0.95rem]">
+        <span className="block whitespace-nowrap font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
           Perth Sweat Clinic
         </span>
-        <span className="hidden whitespace-nowrap text-[0.68rem] uppercase tracking-[0.14em] text-muted sm:block">
+        <span className="hidden whitespace-nowrap text-[0.7rem] uppercase tracking-[0.14em] text-muted sm:block">
           Hyperhidrosis specialists
         </span>
       </span>
@@ -56,6 +64,7 @@ function Wordmark() {
 export function SiteNav() {
   const scrolled = useScrolledPast(40);
   const [menuOpen, setMenuOpen] = useState(false);
+  const handleHashClick = useHashLinkClick();
 
   // A mobile menu that stayed open behind a scrolling page would be a trap.
   useEffect(() => {
@@ -83,15 +92,16 @@ export function SiteNav() {
     >
       <nav
         aria-label="Primary"
-        className="u-container flex h-20 items-center justify-between gap-6"
+        className="u-container flex h-24 items-center justify-between gap-6"
       >
-        <Wordmark />
+        <Wordmark onHashClick={handleHashClick} />
 
-        <ul className="hidden shrink-0 items-center gap-6 lg:flex">
+        <ul className="hidden shrink-0 items-center gap-6 xl:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
+                onClick={(event) => handleHashClick(event, link.href)}
                 className="whitespace-nowrap text-[0.8125rem] font-medium text-slate transition-colors duration-300 hover:text-clinical-700"
               >
                 {link.label}
@@ -128,7 +138,7 @@ export function SiteNav() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink xl:hidden"
           >
             <span className="sr-only">
               {menuOpen ? "Close menu" : "Open menu"}
@@ -162,14 +172,17 @@ export function SiteNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: EASE_OUT_SOFT }}
-            className="border-t border-line bg-bone/97 backdrop-blur-xl lg:hidden"
+            className="border-t border-line bg-bone/97 backdrop-blur-xl xl:hidden"
           >
             <div className="u-container flex flex-col gap-1 py-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => {
+                    handleHashClick(event, link.href);
+                    setMenuOpen(false);
+                  }}
                   className="rounded-2xl px-4 py-3 text-base font-medium text-ink transition-colors duration-200 hover:bg-shell"
                 >
                   {link.label}

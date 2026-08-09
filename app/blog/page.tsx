@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
   return (
     <>
       <SiteNav />
-      <main id="main" className="bg-bone pb-24 pt-36 sm:pt-40">
+      <main id="main" className="bg-bone pb-24 pt-40 sm:pt-44">
         <div className="u-container">
           <SectionHeading
             label="Learn"

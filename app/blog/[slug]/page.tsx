@@ -69,7 +69,7 @@ export default async function BlogPostPage({
       />
       <SiteNav />
       <main id="main" className="bg-bone">
-        <div className={`bg-gradient-to-b ${style.wash} pb-16 pt-36 sm:pt-44`}>
+        <div className={`bg-gradient-to-b ${style.wash} pb-16 pt-40 sm:pt-48`}>
           <div className="u-container">
             <Reveal>
               <Link

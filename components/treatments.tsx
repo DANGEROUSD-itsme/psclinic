@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { ArrowRight, Card, Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
+import { useHashLinkClick } from "@/lib/hooks";
 import { treatments } from "@/lib/site";
 
 function CheckMark() {
@@ -25,6 +26,7 @@ function CheckMark() {
 }
 
 export function Treatments() {
+  const handleHashClick = useHashLinkClick();
   return (
     <section id="treatments" className="relative isolate bg-bone py-24 sm:py-32">
       <SectionSeam from="shell" />
@@ -73,6 +75,7 @@ export function Treatments() {
 
                   <Link
                     href={treatment.href}
+                    onClick={(event) => handleHashClick(event, treatment.href)}
                     className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-clinical-700 transition-colors duration-300 hover:text-clinical-800"
                   >
                     {treatment.id === "consult"

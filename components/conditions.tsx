@@ -7,7 +7,7 @@ import { useCallback, useRef, useState } from "react";
 
 import { ArrowRight, Reveal, RevealGroup, RevealItem, SectionHeading } from "@/components/ui";
 import type { FieldParams } from "@/components/webgl/condition-field";
-import { useNearViewport, useWebGLEligible } from "@/lib/hooks";
+import { useHashLinkClick, useNearViewport, useWebGLEligible } from "@/lib/hooks";
 import { EASE_OUT_SOFT } from "@/lib/motion";
 import { conditionFacts, conditions, type ConditionId } from "@/lib/site";
 
@@ -40,6 +40,7 @@ export function Conditions() {
   const [active, setActive] = useState<ConditionId>("hands");
   const [visualRef, nearViewport] = useNearViewport<HTMLDivElement>("250px");
   const webglEligible = useWebGLEligible();
+  const handleHashClick = useHashLinkClick();
 
   const condition = conditions.find((item) => item.id === active) ?? conditions[0];
   const showCanvas = webglEligible && nearViewport;
@@ -164,6 +165,7 @@ export function Conditions() {
 
                 <Link
                   href={condition.treatmentHref}
+                  onClick={(event) => handleHashClick(event, condition.treatmentHref)}
                   className="group mt-9 inline-flex items-center gap-2.5 rounded-full border border-line-strong bg-white px-5 py-3 text-sm font-semibold text-ink transition duration-300 ease-out-soft hover:-translate-y-0.5 hover:border-clinical-300 hover:shadow-lift"
                 >
                   <span className="text-muted">Treated with</span>

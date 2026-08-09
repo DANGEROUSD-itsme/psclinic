@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import type { ComponentProps, ReactNode } from "react";
 
+import { useHashLinkClick } from "@/lib/hooks";
 import { fadeUp, stagger, viewportOnce, viewportOnceSoft } from "@/lib/motion";
 
 /* ------------------------------------------------------------------ reveal */
@@ -156,6 +157,7 @@ export function ButtonLink({
   size = "md",
   className = "",
   children,
+  onClick,
   ...rest
 }: {
   href: string;
@@ -164,10 +166,15 @@ export function ButtonLink({
   className?: string;
   children: ReactNode;
 } & Omit<ComponentProps<typeof Link>, "href" | "className" | "children">) {
+  const handleHashClick = useHashLinkClick();
   return (
     <Link
       href={href}
       className={`${buttonBase} ${buttonSizes[size]} ${buttonTones[tone]} ${className}`}
+      onClick={(event) => {
+        handleHashClick(event, href);
+        onClick?.(event);
+      }}
       {...rest}
     >
       {children}
