@@ -37,6 +37,7 @@ export const clinic = {
 export const doctor = {
   name: "Dr Sanjay Sharma",
   role: "Founder & Lead Specialist",
+  photo: "/team/dr-sanjay-sharma.png",
   quals: "MBBS (UWA), FRACS (Cardiothoracic Surgery)",
   quote:
     "The delight of shaking a patient's dry hand after surgery is one of the most gratifying aspects of being a surgeon.",
@@ -95,6 +96,7 @@ export const careTeam = [
   {
     name: "Rishi Barot",
     role: "Clinical Nurse Coordinator",
+    photo: "/team/rishi-barot.png",
     quals:
       "B.Sc. Nursing, Curtin University (2007–2011) · Grad. Cert. Clinical Nursing, University of Notre Dame Fremantle (2013)",
     summary:

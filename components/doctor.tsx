@@ -1,29 +1,15 @@
 "use client";
 
+import Image from "next/image";
+
 import { ArrowRight, ButtonLink, Reveal, RevealGroup, RevealItem, SectionLabel, SectionSeam } from "@/components/ui";
 import { careTeam, doctor } from "@/lib/site";
-
-function initials(name: string): string {
-  return name
-    .split(" ")
-    .filter((part) => /^[A-Za-z]/.test(part))
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
 
 /**
  * Dr Sharma leads the practice and his credentials are its strongest single
  * asset, so they get a full section rather than a paragraph in an about
  * page — but he is not the only person a patient deals with. The care team
  * strip at the end of this section introduces who else is involved.
- *
- * Portrait drop-in: once real photos are available, place them at
- * `/public/team/dr-sanjay-sharma.jpg` and `/public/team/rishi-barot.jpg`
- * and swap the two placeholder blocks below for `next/image`. Everything
- * else — frame sizing, the 4:5 aspect ratio, the care-team avatar circles —
- * is already built to take them without further layout work.
  */
 export function Doctor() {
   return (
@@ -43,32 +29,15 @@ export function Doctor() {
         {/* Portrait + quote */}
         <div className="lg:sticky lg:top-28">
           <Reveal>
-            {/*
-              Portrait placeholder. Replace the inner block with a real
-              photograph of Dr Sharma — bright, natural lighting, clinical
-              rather than corporate. The 4:5 frame and treatment below are
-              built to take an <Image> drop-in without further layout work.
-            */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-panel border border-line bg-white shadow-lift">
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(70% 60% at 30% 20%, #dff2f5 0%, transparent 70%), radial-gradient(60% 55% at 80% 85%, #f7e4d6 0%, transparent 72%), #fbfbf9",
-                }}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-panel border border-line bg-shell shadow-lift">
+              <Image
+                src={doctor.photo}
+                alt={`${doctor.name}, ${doctor.role}`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 32vw, 90vw"
+                className="object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-                <span
-                  aria-hidden
-                  className="flex h-24 w-24 items-center justify-center rounded-full border border-clinical-200 bg-white/70 font-display text-3xl text-clinical-700 backdrop-blur"
-                >
-                  {initials(doctor.name)}
-                </span>
-                <p className="px-10 text-center text-sm text-muted">
-                  Portrait of {doctor.name}
-                </p>
-              </div>
             </div>
           </Reveal>
 
@@ -195,14 +164,14 @@ export function Doctor() {
             <RevealGroup className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
               <RevealItem className="bg-white px-7 py-7">
                 <div className="flex items-center gap-4">
-                  {/* Same 2-letter avatar treatment as the portrait above,
-                      scaled down — the drop-in photo path is the same one
-                      noted on the component doc comment. */}
-                  <span
-                    aria-hidden
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-clinical-200 bg-clinical-50 font-display text-base text-clinical-700"
-                  >
-                    {initials(doctor.name)}
+                  <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-clinical-200">
+                    <Image
+                      src={doctor.photo}
+                      alt=""
+                      fill
+                      sizes="48px"
+                      className="object-cover"
+                    />
                   </span>
                   <div>
                     <p className="font-display text-lg text-ink">
@@ -219,11 +188,14 @@ export function Doctor() {
               {careTeam.map((member) => (
                 <RevealItem key={member.name} className="bg-white px-7 py-7">
                   <div className="flex items-center gap-4">
-                    <span
-                      aria-hidden
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-clinical-200 bg-clinical-50 font-display text-base text-clinical-700"
-                    >
-                      {initials(member.name)}
+                    <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-clinical-200">
+                      <Image
+                        src={member.photo}
+                        alt=""
+                        fill
+                        sizes="48px"
+                        className="object-cover"
+                      />
                     </span>
                     <div>
                       <p className="font-display text-lg text-ink">

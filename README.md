@@ -108,24 +108,25 @@ All clinic facts, fees, copy and FAQs live in `lib/site.ts` — one source of tr
 so figures cannot drift between sections. Structured data (`MedicalClinic`,
 `Physician`, `FAQPage`) in `app/layout.tsx` is generated from the same data.
 
+## Team photos
+
+`public/team/dr-sanjay-sharma.png` and `public/team/rishi-barot.png` are real
+photos, supplied directly and uploaded into the repo (this environment could not
+fetch them any other way — see the note below). `doctor.photo` and
+`careTeam[].photo` in `lib/site.ts` point at them; `components/doctor.tsx`
+renders both through `next/image`, in the portrait frame and in the matching
+avatar circle on each care-team card.
+
+Getting more staff photos in later: the fetch and `curl` tooling in this kind
+of sandbox get a `403` from the network's egress policy for domains outside a
+small allowlist — confirmed for both `perthsweatclinic.com.au` and
+`drive.google.com` — and images pasted directly into chat aren't written to
+the sandbox's filesystem, so there's no file to read even when a photo is
+visible in the conversation. Uploading the file directly into the GitHub repo
+is what actually works.
+
 ## Known gaps — things needing the clinic's input
 
-- **Photos of the team.** Bio content for both Dr Sharma and Clinical Nurse
-  Coordinator Rishi Barot (`doctor` and `careTeam` in `lib/site.ts`) is sourced
-  from the clinic's own "About Us" page. Portraits are still placeholders —
-  this environment cannot reach `perthsweatclinic.com.au` at all (`curl` and
-  the fetch tooling both get a `403` from the network's egress policy), and
-  images pasted directly into chat aren't written anywhere on this sandbox's
-  filesystem, so there is no file to read even when a photo is shown in the
-  conversation. `components/doctor.tsx` has a designed 4:5 placeholder for Dr
-  Sharma and a matching avatar circle on each care-team card, both commented
-  with the expected paths (`/public/team/dr-sanjay-sharma.jpg`,
-  `/public/team/rishi-barot.jpg`) — add the files there (or anywhere in the
-  repo) and swap the placeholder `<div>` blocks for `next/image`. The most
-  reliable way to get them in: upload the two files directly into the GitHub
-  repo (Add file → Upload files) under `public/team/`, or via any URL an
-  operator session can fetch (Drive, Dropbox, S3 — anything that isn't
-  perthsweatclinic.com.au itself).
 - **Other staff.** Whether there are additional doctors, admin or reception
   staff worth introducing the same way is worth confirming with the clinic —
   `careTeam` takes more entries with no component changes needed.
