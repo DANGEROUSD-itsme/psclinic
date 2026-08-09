@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { SectionSeam } from "@/components/ui";
@@ -19,25 +20,14 @@ export function Footer() {
       <div className="u-container py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <span
-                aria-hidden
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-clinical-700"
-              >
-                <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]">
-                  <path
-                    d="M10 3.5c2.6 3 4 5 4 6.8a4 4 0 1 1-8 0c0-1.8 1.4-3.8 4-6.8Z"
-                    stroke="white"
-                    strokeWidth="1.4"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <span className="font-display text-base font-semibold text-ink">
-                {clinic.name}
-              </span>
-            </div>
-            <p className="u-measure mt-5 text-sm text-slate">
+            <Image
+              src="/brand/logo-full.png"
+              alt="Perth Sweat Clinic, hyperhidrosis specialists"
+              width={890}
+              height={333}
+              className="h-16 w-auto"
+            />
+            <p className="u-measure mt-6 text-sm text-slate">
               Hyperhidrosis treatment in Perth: endoscopic thoracic
               sympathectomy and miraDry, led by cardiothoracic surgeon Dr Sanjay
               Sharma.

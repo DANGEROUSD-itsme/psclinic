@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -19,44 +20,18 @@ function Wordmark({
     <Link
       href="#main"
       onClick={(event) => onHashClick(event, "#main")}
-      className="group flex shrink-0 items-center gap-3"
+      className="flex shrink-0 items-center transition-transform duration-300 ease-out-soft hover:scale-[1.02]"
     >
-      {/*
-        Sized up decisively so the mark reads as a real piece of the brand
-        in the header, not a small icon next to the wordmark, while the
-        nav's own height (h-24) grew to match rather than crowd it.
-        shadow-lift gives it a touch of the same lift the card surfaces get
-        elsewhere, rather than sitting flat.
-      */}
-      <span
-        aria-hidden
-        className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-clinical-700 shadow-lift transition-transform duration-300 ease-out-soft group-hover:scale-105 sm:h-16 sm:w-16"
-      >
-        {/* A droplet, resolving. */}
-        <svg viewBox="0 0 20 20" fill="none" className="h-7 w-7 sm:h-8 sm:w-8">
-          <path
-            d="M10 3.5c2.6 3 4 5 4 6.8a4 4 0 1 1-8 0c0-1.8 1.4-3.8 4-6.8Z"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-      {/*
-        The clinic name itself is always visible, at every viewport width —
-        it is the one thing in the header that should never disappear. Only
-        the smaller tagline line under it, a "nice to have" rather than
-        identifying information, is held back below `sm` to keep the header
-        from feeling cramped on the narrowest phones.
-      */}
-      <span className="leading-tight">
-        <span className="block whitespace-nowrap font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
-          Perth Sweat Clinic
-        </span>
-        <span className="hidden whitespace-nowrap text-sm uppercase tracking-[0.14em] text-muted sm:block">
-          Hyperhidrosis specialists
-        </span>
-      </span>
+      {/* The clinic's own logo, cropped from their source artwork with the
+          white background removed so it sits cleanly on any nav state. */}
+      <Image
+        src="/brand/logo.png"
+        alt="Perth Sweat Clinic, hyperhidrosis specialists"
+        width={880}
+        height={269}
+        priority
+        className="h-14 w-auto sm:h-[4.25rem]"
+      />
     </Link>
   );
 }
