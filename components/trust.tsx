@@ -1,62 +1,46 @@
 "use client";
 
-import { Rain } from "@/components/rain";
-import { Reveal, RevealGroup, RevealItem, SectionSeam } from "@/components/ui";
+import { Reveal, RevealGroup, RevealItem, SectionHeading, SectionSeam } from "@/components/ui";
 import { patientStories, trustStats } from "@/lib/site";
 
+/**
+ * Results.
+ *
+ * This used to be the site's one dark section — a deliberate mood change
+ * between the treatment detail and the commercial sections. In practice it
+ * read as a hard, ugly cut in the page rather than a considered pause, so
+ * it's back on the light base like everything around it. The rain effect
+ * that lived here moved to the hero, which is where "weather" actually
+ * belongs on this page — this section just states the results plainly.
+ */
 export function Trust() {
   return (
-    <section id="results" className="relative isolate overflow-hidden bg-clinical-900 py-24 sm:py-32">
-      {/* The one dark moment on the site — a deliberate pause between the
-          treatment detail and the commercial sections. Both seams are wider
-          than usual: a light-to-dark transition needs a longer blend than a
-          same-tone one to avoid reading as a hard flash. */}
-      <SectionSeam from="shell" height="h-40 sm:h-52" />
-      <SectionSeam from="bone" edge="bottom" height="h-40 sm:h-52" />
+    <section id="results" className="relative isolate overflow-hidden bg-bone py-24 sm:py-32">
+      <SectionSeam from="shell" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute -left-32 top-0 h-[34rem] w-[34rem] rounded-full opacity-50 blur-3xl"
         style={{
           background:
-            "radial-gradient(60% 60% at 20% 15%, rgba(56,173,189,0.4) 0%, transparent 65%), radial-gradient(55% 55% at 85% 80%, rgba(209,118,75,0.25) 0%, transparent 68%)",
+            "radial-gradient(circle, rgba(169,225,233,0.55) 0%, transparent 68%)",
         }}
       />
-      <Rain />
-      {/* Dithers the dark gradient above so it doesn't band on real
-          displays — see the .u-grain comment in globals.css. */}
-      <div aria-hidden className="u-grain pointer-events-none absolute inset-0 -z-10" />
 
       <div className="u-container relative">
-        <div className="max-w-2xl">
-          <Reveal>
-            <span className="inline-flex items-center gap-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-clinical-200">
-              <span aria-hidden className="h-px w-6 bg-clinical-400" />
-              Results
-            </span>
-          </Reveal>
-          <Reveal>
-            <h2 className="mt-5 text-display-md text-white sm:text-display-lg">
-              Permanent means permanent.
-            </h2>
-          </Reveal>
-          <Reveal>
-            <p className="mt-5 text-lg text-clinical-100">
-              These are not treatments you return for every few months. The
-              glands do not regenerate, and the nerve signal does not come
-              back.
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeading
+          label="Results"
+          title="Permanent means permanent."
+          lede="These are not treatments you return for every few months. The glands do not regenerate, and the nerve signal does not come back."
+        />
 
-        <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {trustStats.map((stat) => (
-            <RevealItem
-              key={stat.label}
-              className="rounded-card border border-white/12 bg-white/6 p-7 backdrop-blur"
-            >
-              <p className="font-display text-3xl text-white">{stat.value}</p>
-              <p className="mt-3 text-sm text-clinical-100">{stat.label}</p>
-              <p className="mt-3 border-t border-white/12 pt-3 text-xs text-clinical-200/80">
+            <RevealItem key={stat.label} className="bg-white px-7 py-7">
+              <p className="font-display text-3xl text-clinical-700">
+                {stat.value}
+              </p>
+              <p className="mt-3 text-sm text-slate">{stat.label}</p>
+              <p className="mt-3 border-t border-line pt-3 text-xs text-muted">
                 {stat.detail}
               </p>
             </RevealItem>
@@ -69,12 +53,12 @@ export function Trust() {
             {patientStories.map((story) => (
               <RevealItem
                 key={story.quote.slice(0, 40)}
-                className="rounded-card border border-white/12 bg-white/6 p-7 backdrop-blur"
+                className="rounded-card border border-line bg-white p-7"
               >
-                <blockquote className="font-display text-lg leading-snug text-white">
+                <blockquote className="font-display text-lg leading-snug text-ink">
                   {story.quote}
                 </blockquote>
-                <p className="mt-5 text-sm text-clinical-200">
+                <p className="mt-5 text-sm text-muted">
                   {story.attribution} · {story.treatment}
                 </p>
               </RevealItem>
